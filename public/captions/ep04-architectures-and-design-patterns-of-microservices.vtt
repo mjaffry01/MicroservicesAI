@@ -1,0 +1,289 @@
+WEBVTT
+
+1
+00:00:02.400 --> 00:00:21.567
+Hello. My name is Mohammad Ali Jaffry. I am an architect. With ten years of architectural experience. Welcome, to this episode. Architectures and design patterns of microservices.
+
+2
+00:00:33.000 --> 00:00:36.808
+A pattern is a named, reusable answer to a recurring problem.
+
+3
+00:00:37.188 --> 00:00:39.324
+Circuit breaker.
+
+4
+00:00:40.364 --> 00:00:41.200
+Saga.
+
+5
+00:00:42.240 --> 00:00:43.657
+API gateway.
+
+6
+00:00:44.697 --> 00:00:50.107
+Microservice architecture is one style; the patterns are the decisions inside that style.
+
+7
+00:00:50.487 --> 00:01:05.115
+Chris Richardson’s pattern language at microservices.io is the catalog architects actually use — he dates it to the 18th of March 2014, a week before the Lewis and Fowler article, and published it as ‘Microservices Patterns’ in 2018.
+
+8
+00:01:06.095 --> 00:01:11.308
+An application is a set of services that can be deployed on their own and stay loosely coupled.
+
+9
+00:01:11.688 --> 00:01:15.636
+Richardson keeps the monolith in the language too, as the other style.
+
+10
+00:01:16.016 --> 00:01:28.694
+Moving from one to the other is itself a design: the strangler application — Fowler’s metaphor of the fig that grows around its host tree — plus an anti-corruption layer, so the new model is translated at the edge of the old one.
+
+11
+00:01:29.674 --> 00:01:31.183
+Where is the boundary?
+
+12
+00:01:32.223 --> 00:01:37.401
+Decompose by business capability, following Lewis and Fowler.
+
+13
+00:01:38.441 --> 00:01:43.294
+Decompose by subdomain, following Eric Evans’s bounded contexts.
+
+14
+00:01:44.334 --> 00:01:52.043
+Later additions: service per team, and the self-contained service — one that answers a synchronous request without waiting on anyone else.
+
+15
+00:01:52.423 --> 00:01:55.175
+Boundary size is the hard judgment.
+
+16
+00:01:56.215 --> 00:02:00.882
+Forces that split a system pull against forces that hold it together.
+
+17
+00:02:01.862 --> 00:02:05.693
+Database per service is the data architecture that makes the rest necessary.
+
+18
+00:02:06.073 --> 00:02:10.682
+Each service has a private database, so a schema change stays inside one team.
+
+19
+00:02:11.062 --> 00:02:15.555
+Once data is private, one business action is no longer one database transaction.
+
+20
+00:02:16.255 --> 00:02:20.249
+Everything in the next two minutes follows from that sentence.
+
+21
+00:02:21.229 --> 00:02:24.747
+A saga is a sequence of local transactions.
+
+22
+00:02:25.787 --> 00:02:29.398
+If a later step fails, earlier steps run compensations.
+
+23
+00:02:29.778 --> 00:02:36.314
+The idea is from Garcia-Molina and Salem, 1987; Richardson applied it to services.
+
+24
+00:02:37.014 --> 00:02:38.988
+It has two structures.
+
+25
+00:02:40.028 --> 00:02:49.432
+Choreography: the order service publishes OrderPlaced, inventory and payment react and publish their own events, and no coordinator holds the whole story.
+
+26
+00:02:49.812 --> 00:02:56.697
+Orchestration: one coordinator tells inventory to reserve, then payment to charge, and runs the compensation if payment fails.
+
+27
+00:02:57.677 --> 00:02:59.859
+Queries have their own patterns.
+
+28
+00:03:00.899 --> 00:03:05.300
+API composition asks each owner and joins the answers in memory.
+
+29
+00:03:05.680 --> 00:03:08.048
+CQRS keeps a separate read model.
+
+30
+00:03:09.088 --> 00:03:16.240
+A command-side replica gives a service a local, read-only copy of data it does not own.
+
+31
+00:03:17.280 --> 00:03:24.397
+And publishing events safely is its own group — transactional outbox, transaction log tailing, polling publisher.
+
+32
+00:03:24.777 --> 00:03:29.548
+The point of all three is that the database write and the message leave together.
+
+33
+00:03:30.528 --> 00:03:35.776
+Remote procedure invocation — HTTP, gRPC — is the synchronous pipe.
+
+34
+00:03:36.156 --> 00:03:42.576
+Messaging is the asynchronous one, and consumers are designed to be idempotent because a message can arrive twice.
+
+35
+00:03:42.956 --> 00:03:45.731
+Outside clients meet an API gateway, one front door.
+
+36
+00:03:46.431 --> 00:03:53.815
+A backend for frontend is a gateway per client experience — web, iOS, Android — owned by the team that ships that client.
+
+37
+00:03:54.195 --> 00:03:57.167
+The rule that makes it work: one experience, one backend.
+
+38
+00:03:58.147 --> 00:04:01.793
+Callers find instances through a service registry.
+
+39
+00:04:02.833 --> 00:04:10.704
+A circuit breaker — Michael Nygard’s name, from ‘Release It!’ in 2007 — stops calling a dependency whose failures have crossed a threshold.
+
+40
+00:04:11.084 --> 00:04:14.451
+Timeouts, retries, and bulkheads travel with it.
+
+41
+00:04:15.491 --> 00:04:18.626
+Identity travels as an access token.
+
+42
+00:04:19.666 --> 00:04:30.010
+And after the call, the system is understood through log aggregation, metrics, distributed tracing, and a health check API — because a single request is now a path across processes.
+
+43
+00:04:30.990 --> 00:04:41.718
+Deployment patterns choose the unit that starts and scales — one service instance per container became the ordinary choice after Docker and Kubernetes; serverless is the other extreme.
+
+44
+00:04:42.098 --> 00:04:55.775
+Shared mechanics sit in a microservice chassis, a framework every service uses, or, from about 2016, in a sidecar and a service mesh — a proxy beside the service that carries retries, discovery, and traffic policy.
+
+45
+00:04:56.755 --> 00:05:01.004
+Richardson groups the whole language by the question an architect is answering.
+
+46
+00:05:01.384 --> 00:05:03.509
+Sixteen questions.
+
+47
+00:05:04.549 --> 00:05:07.010
+Where is the boundary.
+
+48
+00:05:08.050 --> 00:05:10.116
+Who owns the data.
+
+49
+00:05:11.156 --> 00:05:13.711
+How does a command cross services.
+
+50
+00:05:14.751 --> 00:05:16.213
+How does a query.
+
+51
+00:05:17.253 --> 00:05:18.937
+How is change recorded.
+
+52
+00:05:19.977 --> 00:05:22.612
+How is a message published with the write.
+
+53
+00:05:23.652 --> 00:05:25.510
+How do services talk.
+
+54
+00:05:26.550 --> 00:05:28.350
+How do clients enter.
+
+55
+00:05:29.390 --> 00:05:31.305
+How is an instance found.
+
+56
+00:05:32.345 --> 00:05:34.772
+How does failure stay local.
+
+57
+00:05:35.812 --> 00:05:37.855
+How does identity travel.
+
+58
+00:05:38.895 --> 00:05:40.718
+How is the system seen.
+
+59
+00:05:41.758 --> 00:05:43.058
+How is it deployed.
+
+60
+00:05:44.098 --> 00:05:45.828
+How is a screen built.
+
+61
+00:05:46.868 --> 00:05:48.877
+How do you leave a monolith.
+
+62
+00:05:49.917 --> 00:05:52.308
+Where do shared mechanics live.
+
+63
+00:05:53.628 --> 00:05:56.194
+These names are the before-state.
+
+64
+00:05:57.234 --> 00:06:12.443
+A later claim that AI influenced microservice architecture has to name a decision in this sequence: where boundaries are drawn, how a saga is coordinated, whether the pipe stays dumb, or whether the sidecar and the mesh absorb the reliability patterns.
+
+65
+00:06:13.423 --> 00:06:15.374
+Three things to carry away.
+
+66
+00:06:16.414 --> 00:06:17.040
+One.
+
+67
+00:06:18.080 --> 00:06:22.121
+Patterns are decisions, arranged as the questions an architect meets in order.
+
+68
+00:06:22.821 --> 00:06:23.343
+Two.
+
+69
+00:06:24.383 --> 00:06:29.759
+Private data makes everything else necessary: sagas, composition, CQRS, outboxes.
+
+70
+00:06:30.139 --> 00:06:30.847
+Three.
+
+71
+00:06:31.887 --> 00:06:35.381
+Any AI claim must name one decision in this sequence.
+
+72
+00:06:36.701 --> 00:06:43.075
+Next: the whole catalog on one wall — fifteen jobs, sixty-one patterns, and where each name comes from.

@@ -1,0 +1,241 @@
+WEBVTT
+
+1
+00:00:02.400 --> 00:00:20.731
+Hello. My name is Mohammad Ali Jaffry. I am an architect. With ten years of architectural experience. Welcome, to this episode. The history of microservices.
+
+2
+00:00:33.000 --> 00:00:36.564
+Nobody invented microservices on a given day.
+
+3
+00:00:37.604 --> 00:00:52.349
+The word was argued over in 2011 and 2012, and fixed in public on the 25th of March 2014, when James Lewis and Martin Fowler published an article called, simply, ‘Microservices’.
+
+4
+00:00:52.729 --> 00:00:57.454
+But the practice was running for more than a decade before the industry had a stable name for it.
+
+5
+00:00:58.434 --> 00:00:59.665
+The roots are old.
+
+6
+00:01:00.705 --> 00:01:07.137
+Fowler and Lewis pointed at Unix: small programs, each doing one job, joined by simple pipes.
+
+7
+00:01:07.517 --> 00:01:12.799
+Lewis’s 2012 talk was titled ‘Microservices — Java, the Unix Way’.
+
+8
+00:01:13.499 --> 00:01:16.611
+The organizational idea is older still.
+
+9
+00:01:17.651 --> 00:01:24.849
+In 1968 Melvin Conway wrote that a system copies the communication structure of the organization that designs it.
+
+10
+00:01:25.229 --> 00:01:30.094
+That sentence later justified drawing service boundaries along business teams.
+
+11
+00:01:30.794 --> 00:01:40.291
+And in April 1996, two Gartner analysts described a ‘service oriented’ architecture: shared logic and data, reached through interfaces.
+
+12
+00:01:41.271 --> 00:01:53.833
+Through the 2000s that idea arrived in enterprises as SOAP, central governance, and an enterprise service bus — a central piece of middleware that routed, transformed, and applied rules.
+
+13
+00:01:54.213 --> 00:02:04.592
+Lewis and Fowler wrote their article because ‘SOA’ had come to mean too many incompatible things, and the systems they admired were a sharper variant: smart services, dull pipes.
+
+14
+00:02:05.572 --> 00:02:08.335
+Amazon was already doing it.
+
+15
+00:02:09.375 --> 00:02:18.593
+In 1998 senior engineers wrote the Distributed Computing Manifesto — Werner Vogels published it in 2022.
+
+16
+00:02:18.973 --> 00:02:25.080
+In a 2006 interview Vogels said the two-tier monolith had stopped scaling around 2001.
+
+17
+00:02:25.780 --> 00:02:33.570
+The rule they adopted: encapsulate the data with the logic that uses it, allow no outside database access, and share no data between services.
+
+18
+00:02:33.950 --> 00:02:45.084
+There is also the famous Bezos mandate of around 2002 — but that comes from Steve Yegge’s 2011 retelling, so the chapter marks it as secondary evidence.
+
+19
+00:02:46.124 --> 00:02:54.739
+The firmer fact is public: Amazon Web Services launched in 2006 by externalizing infrastructure Amazon had built for itself.
+
+20
+00:02:55.719 --> 00:02:58.958
+Netflix made the style famous at web scale.
+
+21
+00:02:59.998 --> 00:03:08.555
+In August 2008 a data-center outage took Netflix down for days, just as streaming load was arriving on top of the DVD business.
+
+22
+00:03:08.935 --> 00:03:15.796
+The decision was to leave the data center and rebuild for the cloud — Adrian Cockcroft called the result ‘fine-grained SOA’.
+
+23
+00:03:16.496 --> 00:03:27.503
+The tools that leaked out — Eureka, Hystrix, Zuul, and Chaos Monkey — are the public form of one 2014 characteristic: design for failure, because a remote call will fail.
+
+24
+00:03:28.483 --> 00:03:29.458
+Then the name.
+
+25
+00:03:30.498 --> 00:03:37.568
+In May 2011 a workshop of architects near Venice found they had been building the same style under different labels.
+
+26
+00:03:37.948 --> 00:03:44.229
+Lewis presented it in Kraków in March 2012; Fred George was speaking about the same ideas.
+
+27
+00:03:44.929 --> 00:03:49.980
+In May 2012 the group chose ‘microservices’.
+
+28
+00:03:51.300 --> 00:03:53.471
+And then the platform caught up.
+
+29
+00:03:54.511 --> 00:04:02.928
+Docker was open-sourced on the 20th of March 2013, which made a service a portable, deployable unit.
+
+30
+00:04:03.308 --> 00:04:10.901
+Kubernetes’s first commit is the 6th of June 2014; Eric Brewer announced it at DockerCon four days later.
+
+31
+00:04:11.601 --> 00:04:19.484
+Kubernetes 1.0 and the Cloud Native Computing Foundation were announced together on the 21st of July 2015.
+
+32
+00:04:19.864 --> 00:04:23.916
+Sam Newman’s ‘Building Microservices’ became the practice manual that year.
+
+33
+00:04:24.296 --> 00:04:36.835
+Linkerd in 2016 and Istio in 2017 added a traffic layer — discovery, retries, routing — because operating hundreds of services had become its own problem.
+
+34
+00:04:37.815 --> 00:04:40.160
+Here is the part people forget.
+
+35
+00:04:41.200 --> 00:04:53.054
+On the 13th of May 2015, in the same year as the boom, Fowler published ‘MicroservicePremium’: distribution adds complexity and risk, and teams that take it on before they need it get into trouble.
+
+36
+00:04:53.434 --> 00:05:01.154
+From 2015 to about 2021 the correction was monolith-first advice and the modular monolith.
+
+37
+00:05:01.854 --> 00:05:09.737
+Many systems called microservices were one deployment unit sliced across the network, still sharing a database and a release train.
+
+38
+00:05:10.717 --> 00:05:14.119
+So what did the 2014 article fix?
+
+39
+00:05:15.159 --> 00:05:18.642
+Lewis and Fowler refused a formal definition.
+
+40
+00:05:19.682 --> 00:05:22.631
+They listed characteristics they kept seeing.
+
+41
+00:05:23.671 --> 00:05:25.900
+Services as components.
+
+42
+00:05:26.940 --> 00:05:29.901
+Organized around business capabilities.
+
+43
+00:05:30.941 --> 00:05:33.820
+Products, not projects — you build it, you run it.
+
+44
+00:05:34.860 --> 00:05:37.902
+Smart endpoints and dumb pipes.
+
+45
+00:05:38.942 --> 00:05:41.090
+Decentralized governance.
+
+46
+00:05:42.130 --> 00:05:44.057
+Decentralized data.
+
+47
+00:05:45.097 --> 00:05:47.407
+Infrastructure automation.
+
+48
+00:05:48.447 --> 00:05:50.061
+Design for failure.
+
+49
+00:05:51.101 --> 00:05:52.912
+Evolutionary design.
+
+50
+00:05:53.952 --> 00:05:55.810
+Nine characteristics.
+
+51
+00:05:57.130 --> 00:06:06.000
+The style was a rejection of one central brain — the enterprise service bus — in favor of many smart services and dull pipes.
+
+52
+00:06:06.380 --> 00:06:16.283
+And that is the baseline for everything that follows: any claim that AI changed the architecture has to say which of these nine characteristics actually moved.
+
+53
+00:06:17.603 --> 00:06:20.181
+Three things to carry away.
+
+54
+00:06:21.221 --> 00:06:21.871
+One.
+
+55
+00:06:22.911 --> 00:06:30.016
+The practice is decades older than the name: the name from 2012, the description from 25 March 2014.
+
+56
+00:06:30.716 --> 00:06:31.215
+Two.
+
+57
+00:06:32.255 --> 00:06:38.676
+Amazon and Netflix got there by necessity — a monolith that stopped scaling, an outage that lasted days.
+
+58
+00:06:39.056 --> 00:06:39.799
+Three.
+
+59
+00:06:40.839 --> 00:06:46.400
+The nine characteristics are the ruler; the 2015 ‘premium’ is the warning that travels with it.
+
+60
+00:06:47.380 --> 00:06:52.720
+Next: the pattern language — sixteen questions every microservice architect answers, in order.

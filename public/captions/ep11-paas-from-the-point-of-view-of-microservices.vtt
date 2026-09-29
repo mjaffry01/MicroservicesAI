@@ -1,0 +1,161 @@
+WEBVTT
+
+1
+00:00:03.000 --> 00:00:09.367
+Git push. A buildpack turns the repository into something runnable. A router gives it a name.
+
+2
+00:00:09.367 --> 00:00:20.112
+That is the whole promise of platform as a service, and this episode asks what it does for a microservice — and what it will never draw.
+
+3
+00:00:20.712 --> 00:00:33.574
+NIST draws the line in 2011: the consumer does not manage the network, the servers, the operating system, or the storage; the consumer does control the deployed applications.
+
+4
+00:00:33.574 --> 00:00:43.680
+NIST’s evaluation guide names who that consumer is — the developer or deployer, not the end user, not the operator of machines.
+
+5
+00:00:43.680 --> 00:00:52.408
+So a PaaS sits between the two models we already have. Infrastructure as a service hands the team machines.
+
+6
+00:00:52.408 --> 00:00:57.001
+Software as a service hands a tenant a finished product.
+
+7
+00:00:57.001 --> 00:01:07.566
+Platform as a service hands a service team a place to run one service, and the next service, without handing them the machines.
+
+8
+00:01:07.566 --> 00:01:17.672
+Heroku is the classic public example; Cloud Foundry, from 2011, the classic private one; the Twelve-Factor App is the contract both expect.
+
+9
+00:01:18.272 --> 00:01:27.840
+On Heroku the unit is an app. A Procfile names process types: a web process takes HTTP; a worker consumes a queue.
+
+10
+00:01:27.840 --> 00:01:35.668
+Each running copy is a dyno — one command, in a container, disposable. Configuration sits in the environment.
+
+11
+00:01:35.668 --> 00:01:40.886
+A database or a queue is an add-on, bound to the app.
+
+12
+00:01:40.886 --> 00:01:54.803
+From the architecture’s point of view, one bounded context is usually one app, with its web process and its worker as two process types of the same service — not two microservices.
+
+13
+00:01:54.803 --> 00:02:03.066
+A second context is a second app. And the platform will happily bind both apps to one shared database.
+
+14
+00:02:03.066 --> 00:02:11.763
+Database-per-service remains a decision in the repositories and in the bindings the teams choose, not a rule of the dyno.
+
+15
+00:02:12.363 --> 00:02:21.617
+The PaaS is Richardson’s service deployment platform as a product. Instance per container, hidden. Externalized configuration, as bindings.
+
+16
+00:02:21.617 --> 00:02:24.188
+Backing services as attached resources.
+
+17
+00:02:24.188 --> 00:02:38.583
+Server-side discovery through the router — the caller never picks an instance, and the price of that simplicity is that the team also does not see the instance.
+
+18
+00:02:38.583 --> 00:02:49.894
+Disposability: state belongs in the bound store, and logs go to the platform’s stream. Scaling on the X axis, by adding dynos.
+
+19
+00:02:49.894 --> 00:02:54.521
+Third-party registration, by the platform that started the process.
+
+20
+00:02:55.121 --> 00:02:57.961
+A PaaS app is a release unit.
+
+21
+00:02:57.961 --> 00:03:06.076
+It becomes a microservice only if it owns its data and can be released without the apps next to it.
+
+22
+00:03:06.076 --> 00:03:13.785
+Twenty apps that share one schema and one release train are a distributed monolith that happens to push cleanly.
+
+23
+00:03:13.785 --> 00:03:20.277
+Nothing in the push model implements a saga, an outbox, a tenant predicate, or an aggregate.
+
+24
+00:03:20.277 --> 00:03:28.797
+If a message has no tenant, the SaaS requirement is already lost, and the metering of dyno-hours will not catch it.
+
+25
+00:03:28.797 --> 00:03:32.854
+The platform meters compute. The service has to meter meaning.
+
+26
+00:03:33.454 --> 00:03:37.264
+The opinion of the platform is a real constraint.
+
+27
+00:03:37.264 --> 00:03:46.576
+Sidecars, a mesh, and fine network policy are awkward on a classic PaaS, because those knobs were the thing the platform hid.
+
+28
+00:03:46.576 --> 00:03:57.158
+Teams that need them step down to Kubernetes, where those objects are first-class — a change in the responsibility line, not in the bounded context.
+
+29
+00:03:57.158 --> 00:04:03.507
+Many current platforms run on a cluster and show the team only the narrow door.
+
+30
+00:04:03.507 --> 00:04:15.782
+And a platform team, in the Team Topologies sense, is an internal PaaS even when the substrate is Kubernetes: a pipeline, a build, a bind, a route, a dashboard.
+
+31
+00:04:16.382 --> 00:04:26.003
+A company can build its SaaS product by placing each service on a PaaS. The PaaS control plane onboards applications and dynos.
+
+32
+00:04:26.003 --> 00:04:34.312
+The SaaS control plane onboards tenants and tiers. They share a word and they do not share a job.
+
+33
+00:04:34.312 --> 00:04:36.061
+Dynos are not tenants.
+
+34
+00:04:36.061 --> 00:04:45.244
+So an AI claim about PaaS has to show a stateless process, configuration outside the build, and backing services as bindings.
+
+35
+00:04:45.244 --> 00:04:54.864
+It can be a correct twelve-factor app and still share a database, omit the tenant, and call five neighbors in one request.
+
+36
+00:04:54.864 --> 00:04:58.800
+Pushing to a platform discharges neither claim by itself.
+
+37
+00:04:59.400 --> 00:05:09.649
+Three things to carry away. One. A PaaS runs the process you push; the meaning of the process is still yours. Two.
+
+38
+00:05:09.649 --> 00:05:18.034
+A push-clean app can still share a database, omit the tenant, and call five neighbors per request. Three.
+
+39
+00:05:18.034 --> 00:05:26.886
+Dynos are not tenants; the PaaS control plane and the SaaS control plane share a word, not a job.
+
+40
+00:05:27.486 --> 00:05:33.474
+Next: what a system owes when it is sold as software as a service — tenant by tenant.

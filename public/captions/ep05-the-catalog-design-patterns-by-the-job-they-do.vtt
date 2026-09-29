@@ -1,0 +1,137 @@
+WEBVTT
+
+1
+00:00:02.400 --> 00:00:20.832
+Hello. My name is Mohammad Ali Jaffry. I am an architect. With ten years of architectural experience. Welcome, to this episode. The catalog: design patterns by the job they do.
+
+2
+00:00:33.000 --> 00:00:34.428
+Fifteen jobs.
+
+3
+00:00:35.468 --> 00:00:37.836
+Sixty-one patterns.
+
+4
+00:00:38.876 --> 00:00:43.880
+This is the working catalog for the research — the row list every later chapter refers back to.
+
+5
+00:00:44.580 --> 00:00:46.624
+Today we put it on one wall.
+
+6
+00:00:47.944 --> 00:01:09.051
+Every row carries a note on where the name comes from. ‘Index’ means Richardson’s published pattern index. ‘Pattern page’ means a page on his site that the index does not list — sidecar and service mesh. ‘Form of saga’ marks the two ways a saga is coordinated: choreography and orchestration are forms, not extra entries.
+
+7
+00:01:10.091 --> 00:01:20.958
+And ‘Companion’ marks patterns from Michael Nygard’s ‘Release It!’ or the Azure Architecture Center that do the same job as an index entry: timeout, retry, bulkhead, ambassador.
+
+8
+00:01:21.338 --> 00:01:24.507
+They are marked so nobody mistakes them for index entries.
+
+9
+00:01:25.487 --> 00:01:27.182
+The first four jobs.
+
+10
+00:01:28.222 --> 00:01:32.680
+Choosing the overall shape: monolith or microservices.
+
+11
+00:01:33.720 --> 00:01:39.119
+Drawing service boundaries: by capability, by subdomain, per team, or self-contained.
+
+12
+00:01:39.819 --> 00:01:45.194
+Migrating away from a monolith: the strangler application and the anti-corruption layer.
+
+13
+00:01:45.574 --> 00:01:59.193
+And the largest category — owning data and spanning services: database per service against a shared database; the saga and its two forms; command-side replica; API composition; CQRS; domain events; event sourcing.
+
+14
+00:02:00.173 --> 00:02:04.910
+Publishing a message with the database write: outbox, log tailing, polling publisher.
+
+15
+00:02:05.290 --> 00:02:14.427
+Communicating between services: remote procedure invocation, messaging, domain-specific protocols, the idempotent consumer.
+
+16
+00:02:14.807 --> 00:02:19.184
+Facing external clients: API gateway, backend for frontend.
+
+17
+00:02:20.224 --> 00:02:27.817
+Finding a service instance: client-side and server-side discovery, the registry, self and third-party registration.
+
+18
+00:02:28.797 --> 00:02:34.462
+Containing failure: circuit breaker with its companions timeout, retry, and bulkhead.
+
+19
+00:02:34.842 --> 00:02:37.315
+Carrying identity: the access token.
+
+20
+00:02:38.355 --> 00:02:48.584
+Observing the running system: log aggregation, metrics, audit logging, distributed tracing, exception tracking, the health check API, and logging deployments and changes.
+
+21
+00:02:49.284 --> 00:02:59.222
+Deploying services: multiple instances per host, one per host, per virtual machine, per container, serverless, and the deployment platform.
+
+22
+00:03:00.202 --> 00:03:07.481
+Sharing mechanics across services: chassis, externalized configuration, service template, sidecar, service mesh, ambassador.
+
+23
+00:03:07.861 --> 00:03:13.562
+Testing services: consumer-driven and consumer-side contract tests, and the service component test.
+
+24
+00:03:13.942 --> 00:03:20.234
+Composing a screen from many services: server-side page fragments, or client-side UI composition.
+
+25
+00:03:21.214 --> 00:03:32.441
+What is deliberately left out: general cloud patterns that are not part of this language — sharding, leader election, competing consumers, and the rest of the Azure cloud design catalog.
+
+26
+00:03:33.481 --> 00:03:42.096
+They solve infrastructure problems that a microservice system may also have, and they are not the microservice pattern language.
+
+27
+00:03:43.416 --> 00:03:46.167
+Three things to carry away.
+
+28
+00:03:47.207 --> 00:03:47.869
+One.
+
+29
+00:03:48.909 --> 00:03:54.378
+Fifteen jobs, sixty-one patterns, and a Record column that says where each name comes from.
+
+30
+00:03:55.078 --> 00:03:55.554
+Two.
+
+31
+00:03:56.594 --> 00:04:00.680
+Companions are marked so they are not mistaken for index entries.
+
+32
+00:04:01.720 --> 00:04:02.533
+Three.
+
+33
+00:04:03.573 --> 00:04:07.346
+General cloud patterns are deliberately left out.
+
+34
+00:04:08.666 --> 00:04:16.422
+Next, the long one: every pattern shown in the software that made it ordinary — Amazon, Netflix, Uber, Airbnb, Shopify, Stripe.

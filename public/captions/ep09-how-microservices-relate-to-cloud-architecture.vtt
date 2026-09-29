@@ -1,0 +1,249 @@
+WEBVTT
+
+1
+00:00:02.400 --> 00:00:21.741
+Hello. My name is Mohammad Ali Jaffry. I am an architect. With ten years of architectural experience. Welcome, to this episode. How microservices relate to cloud architecture.
+
+2
+00:00:33.000 --> 00:00:37.447
+A monolith on a virtual machine is a cloud deployment of a monolith.
+
+3
+00:00:37.827 --> 00:00:43.632
+Say it twice, because three different questions hide under the word ‘cloud’, and this episode pulls them apart.
+
+4
+00:00:44.612 --> 00:00:52.495
+Cloud architecture decides where the software runs, how failure is contained across machines and sites, and which platform services teams may use.
+
+5
+00:00:52.875 --> 00:01:01.106
+Microservice architecture decides how the application is divided, who owns the data, and how a business action crosses those divisions.
+
+6
+00:01:01.486 --> 00:01:12.214
+Cloud native is the name for the overlap — where the application is built so it can use the cloud’s elasticity, and microservices are one of the forms that application takes.
+
+7
+00:01:12.914 --> 00:01:17.407
+The relationship is real, and it is a relationship between two decisions.
+
+8
+00:01:18.387 --> 00:01:27.547
+NIST fixed the cloud half in September 2011: on-demand self-service, broad network access, resource pooling, rapid elasticity, measured service.
+
+9
+00:01:27.927 --> 00:01:33.105
+Nothing in that definition requires the consumer’s application to be a set of microservices.
+
+10
+00:01:33.485 --> 00:01:53.571
+The Cloud Native Computing Foundation’s definition, version 1.1, approved on the 26th of February 2024, puts microservices in the other half — on an explicitly non-exhaustive list: containers, service meshes, multi-tenancy, microservices, immutable infrastructure, serverless, declarative APIs.
+
+11
+00:01:54.271 --> 00:01:58.113
+Microservices are one item on that list.
+
+12
+00:01:59.433 --> 00:02:04.275
+Amazon’s service interfaces became a public cloud in 2006.
+
+13
+00:02:04.655 --> 00:02:10.355
+Netflix’s 2008 outage pushed a monolith toward AWS and fine-grained services.
+
+14
+00:02:10.735 --> 00:02:16.842
+Heroku’s Twelve-Factor App, 2011, wrote the contract between an application and a platform.
+
+15
+00:02:17.542 --> 00:02:23.753
+Docker and Kubernetes made the service instance a container the platform could place, restart, and scale.
+
+16
+00:02:24.133 --> 00:02:29.729
+Here is the sentence to keep: the cloud did not invent the service boundary.
+
+17
+00:02:30.769 --> 00:02:32.615
+It made the boundary payable.
+
+18
+00:02:33.655 --> 00:02:39.228
+Many processes, many databases, many network calls are expensive on machines you order months ahead.
+
+19
+00:02:39.608 --> 00:02:44.194
+They are ordinary on a platform that starts a container in seconds and bills for what ran.
+
+20
+00:02:45.174 --> 00:02:48.797
+Moving to the cloud is a separate step from cutting services.
+
+21
+00:02:49.177 --> 00:02:55.295
+Rehosting — lift and shift — moves an application onto cloud machines and leaves its architecture in place.
+
+22
+00:02:55.675 --> 00:03:02.455
+Re-architecting is the later step: decompose, give each service its own store, adopt the collaboration patterns.
+
+23
+00:03:03.155 --> 00:03:07.439
+Self-contained systems and modular monoliths can also be cloud native.
+
+24
+00:03:07.819 --> 00:03:11.058
+They use the platform and keep a larger boundary.
+
+25
+00:03:12.378 --> 00:03:16.663
+Every microservice decision has a cloud capability that implements it.
+
+26
+00:03:17.043 --> 00:03:21.791
+Instance per container: Kubernetes and its managed forms, or functions.
+
+27
+00:03:22.171 --> 00:03:27.303
+Database per service: a managed store of the right type, provisioned for that service.
+
+28
+00:03:28.003 --> 00:03:32.298
+Messaging and outbox publication: a queue, a topic, a log.
+
+29
+00:03:32.678 --> 00:03:36.208
+Saga orchestration: a managed state machine.
+
+30
+00:03:37.248 --> 00:03:40.719
+Circuit breakers and retries: a mesh.
+
+31
+00:03:41.759 --> 00:03:45.823
+Design for failure: more than one availability zone.
+
+32
+00:03:46.863 --> 00:03:50.555
+The relationship is the capability, not the brand.
+
+33
+00:03:51.875 --> 00:03:54.963
+A bounded context does not name a region.
+
+34
+00:03:56.003 --> 00:03:59.950
+Cloud architecture adds placement and blast radius.
+
+35
+00:04:00.990 --> 00:04:05.158
+An availability zone is a data-center-scale failure domain.
+
+36
+00:04:06.198 --> 00:04:11.341
+A region is a geography, often a data-residency boundary.
+
+37
+00:04:12.381 --> 00:04:16.004
+An account is an ownership and blast-radius boundary.
+
+38
+00:04:17.044 --> 00:04:20.863
+Network policy decides which services may call which.
+
+39
+00:04:21.903 --> 00:04:26.629
+These cuts are orthogonal to the domain cut.
+
+40
+00:04:27.669 --> 00:04:31.593
+The shared-responsibility line moves with the service model.
+
+41
+00:04:32.633 --> 00:04:40.261
+And cost is the dark-matter side of the cloud: a design can satisfy the reliability pillar and fail the cost pillar.
+
+42
+00:04:40.961 --> 00:04:44.757
+That is the microservice premium showing up in the platform.
+
+43
+00:04:46.077 --> 00:04:48.991
+Team Topologies gives the usual split.
+
+44
+00:04:50.031 --> 00:04:55.395
+A platform team owns the landing zone, the cluster, the pipeline, and the paved road.
+
+45
+00:04:55.775 --> 00:05:02.091
+A stream-aligned team owns one service, its repository, its database, and its page in the on-call rotation.
+
+46
+00:05:02.791 --> 00:05:07.795
+Microservices without that platform team become a crowd of snowflake deployments.
+
+47
+00:05:08.175 --> 00:05:14.560
+A platform without service boundaries is a cloud hosting a monolith — which is a legitimate architecture.
+
+48
+00:05:15.540 --> 00:05:18.187
+An AI claim has to say which layer moved.
+
+49
+00:05:18.567 --> 00:05:23.525
+Generating a repository, a container file, and a schema is help with the application cut.
+
+50
+00:05:23.905 --> 00:05:29.884
+Choosing a region, an account boundary, or a network policy is cloud architecture.
+
+51
+00:05:30.924 --> 00:05:35.638
+Tools that autoscale, restart, and trace act on the platform’s control loop.
+
+52
+00:05:36.018 --> 00:05:38.990
+Tools that name aggregates act on the domain.
+
+53
+00:05:40.030 --> 00:05:42.468
+Keep those effects in separate columns.
+
+54
+00:05:43.788 --> 00:05:45.645
+Three things to carry away.
+
+55
+00:05:46.685 --> 00:05:47.336
+One.
+
+56
+00:05:48.376 --> 00:05:54.006
+Cloud architecture, cloud native, and microservices are three decisions, not one.
+
+57
+00:05:55.046 --> 00:05:55.592
+Two.
+
+58
+00:05:56.632 --> 00:06:01.125
+The cloud made the service boundary payable; it did not invent it.
+
+59
+00:06:02.165 --> 00:06:02.839
+Three.
+
+60
+00:06:03.879 --> 00:06:09.579
+Zones, regions, accounts, and cost are cuts that domain-driven design does not name.
+
+61
+00:06:10.899 --> 00:06:12.513
+Next: Kubernetes.
+
+62
+00:06:13.553 --> 00:06:19.869
+It will keep a well-cut suite, a monolith, and a distributed monolith equally alive — and cannot tell them apart.

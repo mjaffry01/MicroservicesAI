@@ -1,0 +1,173 @@
+WEBVTT
+
+1
+00:00:03.000 --> 00:00:07.873
+‘The system shall be scalable.’ That sentence is not yet a requirement.
+
+2
+00:00:07.873 --> 00:00:13.151
+It names a concern and gives no measure, no load, and no behavior.
+
+3
+00:00:13.151 --> 00:00:22.896
+This episode is about writing requirements that can fail a test — and about which kind of requirement actually pushes a team toward microservices.
+
+4
+00:00:23.496 --> 00:00:33.361
+A functional requirement states what the system does: a customer can schedule a delivery; an order that has not been paid cannot be dispatched.
+
+5
+00:00:33.361 --> 00:00:36.238
+The test is whether the behavior happened.
+
+6
+00:00:36.238 --> 00:00:43.636
+A non-functional requirement states a quality of that behavior, or a constraint on the system that provides it
+
+7
+00:00:43.636 --> 00:00:51.446
+— how fast, how available, how isolated between tenants, how hard to change, which region may hold the data.
+
+8
+00:00:51.446 --> 00:00:56.378
+The test is whether the behavior met a measure. Both are requirements.
+
+9
+00:00:56.378 --> 00:01:00.900
+A system can do the right thing and still be unfit.
+
+10
+00:01:01.500 --> 00:01:12.143
+Take one feature: cancel a delivery. Functional: when a customer cancels before pickup, the delivery becomes cancelled and the customer is told.
+
+11
+00:01:12.143 --> 00:01:19.400
+Functional, the refusal: after pickup, the delivery stays active and the customer is told why.
+
+12
+00:01:19.400 --> 00:01:28.109
+Non-functional, reliability: if the notification service is down, the cancellation still commits and the notice is sent later.
+
+13
+00:01:28.109 --> 00:01:33.431
+Security: a token for tenant A cannot cancel tenant B’s delivery.
+
+14
+00:01:33.431 --> 00:01:39.720
+Performance: at peak load, ninety-five percent of cancellations complete within the agreed time.
+
+15
+00:01:39.720 --> 00:01:46.010
+And a constraint: delivery data for a country stays in that country’s region.
+
+16
+00:01:46.010 --> 00:01:56.170
+The first two rows are the business rule inside the aggregate. The rest are qualities of how that rule is offered.
+
+17
+00:01:56.770 --> 00:02:08.283
+Functional requirements come from the work — EventStorming timelines, domain stories, given-when-then examples, the system operations Assemblage starts from.
+
+18
+00:02:08.283 --> 00:02:20.402
+Non-functional requirements come from the conditions under which the work must succeed, and ISO/IEC 25010:2023 is their home: nine characteristics.
+
+19
+00:02:20.402 --> 00:02:25.855
+Functional suitability is the quality of the functional side.
+
+20
+00:02:25.855 --> 00:02:38.581
+The other eight — performance efficiency, compatibility, interaction capability, reliability, security, maintainability, flexibility, and safety — are where non-functional requirements live.
+
+21
+00:02:38.581 --> 00:02:44.640
+The 2023 edition renamed usability and portability and added safety.
+
+22
+00:02:45.240 --> 00:02:48.269
+Here is the connection to everything before.
+
+23
+00:02:48.269 --> 00:02:59.521
+A functional requirement can be met inside one service or across several; the existence of a function does not by itself force a new deployable unit.
+
+24
+00:02:59.521 --> 00:03:03.848
+Non-functional requirements are what make the cut expensive or necessary.
+
+25
+00:03:03.848 --> 00:03:09.906
+Independent change and a fast pipeline are maintainability and flexibility — Richardson’s dark energy.
+
+26
+00:03:09.906 --> 00:03:16.398
+A local transaction and a latency budget are reliability and performance — his dark matter.
+
+27
+00:03:16.398 --> 00:03:22.889
+Microservices are often chosen because a non-functional requirement cannot be met inside one release unit.
+
+28
+00:03:22.889 --> 00:03:34.140
+They are often regretted because the non-functional cost of distribution — latency, partial failure, operability — was not written down as a requirement of its own.
+
+29
+00:03:34.740 --> 00:03:41.729
+Bass, Clements, and Kazman treat a quality attribute as a six-part scenario: where the stimulus comes from,
+
+30
+00:03:41.729 --> 00:03:49.952
+what it is, which part of the system it hits, the conditions at the time, the response, and the measure.
+
+31
+00:03:49.952 --> 00:03:56.941
+Written that way, a requirement can fail. ‘When the payment service returns errors above the agreed threshold,
+
+32
+00:03:56.941 --> 00:04:06.397
+the order service stops calling it and still accepts the order as pending within the agreed time’ — that is a circuit-breaker requirement.
+
+33
+00:04:06.397 --> 00:04:10.097
+‘The system shall be resilient’ is a topic heading.
+
+34
+00:04:10.097 --> 00:04:15.853
+The given-when-then example checks the rule; the scenario checks the quality under stated conditions.
+
+35
+00:04:16.453 --> 00:04:21.358
+A generated endpoint that cancels a delivery has addressed a functional requirement.
+
+36
+00:04:21.358 --> 00:04:31.987
+It has not addressed isolation, latency, or what happens when notification is down, unless those scenarios were in the request and show up in the design.
+
+37
+00:04:31.987 --> 00:04:35.666
+Tools that emit code are practicing the functional side.
+
+38
+00:04:35.666 --> 00:04:43.434
+Tools that choose a boundary, a region, a replica count, or a tenant placement are practicing the non-functional side.
+
+39
+00:04:43.434 --> 00:04:53.245
+A suggestion to split a service is an answer to a non-functional requirement — and it is only justified if that requirement was measured.
+
+40
+00:04:53.845 --> 00:05:06.378
+Three things to carry away. One. Functional: what it does. Non-functional: how well, under what constraints. Both must be testable. Two.
+
+41
+00:05:06.378 --> 00:05:18.910
+Services are split to meet a non-functional requirement; the cost of splitting is also non-functional and must be written down. Three.
+
+42
+00:05:18.910 --> 00:05:25.475
+Two test shapes: the given-when-then example, and the six-part quality-attribute scenario.
+
+43
+00:05:26.075 --> 00:05:36.018
+Next: the discipline itself. Eighteen knowledge areas, thirty processes, and the difference between verification and validation.

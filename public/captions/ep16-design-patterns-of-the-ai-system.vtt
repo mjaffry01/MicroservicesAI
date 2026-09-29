@@ -1,0 +1,233 @@
+WEBVTT
+
+1
+00:00:03.000 --> 00:00:07.261
+‘We added an agent.’ That is not yet a claim.
+
+2
+00:00:07.261 --> 00:00:14.505
+Inside a service, a language-model call can be arranged in thirteen shapes, and they are different things.
+
+3
+00:00:14.505 --> 00:00:26.436
+This episode names them, places each in the drone-delivery estate, and pairs it with the microservice decision it most resembles — with one warning that repeats on purpose.
+
+4
+00:00:27.036 --> 00:00:29.361
+Two sources carry the names.
+
+5
+00:00:29.361 --> 00:00:40.986
+Anthropic’s ‘Building effective agents’, from December 2024, separates workflows — where code paths are fixed — from agents, where the model directs its own tools.
+
+6
+00:00:40.986 --> 00:00:47.496
+The Azure Architecture Center’s orchestration guide puts the same work on a complexity ladder.
+
+7
+00:00:47.496 --> 00:00:55.402
+Both start from one rule: use the smallest structure that meets the requirement. A direct model call.
+
+8
+00:00:55.402 --> 00:00:58.192
+Then one augmented model with tools.
+
+9
+00:00:58.192 --> 00:01:10.282
+Then, only when one call is unreliable, one agent needs too many tools, or two parts of the work need different security boundaries — multi-agent orchestration.
+
+10
+00:01:10.282 --> 00:01:14.932
+It is not justified by the presence of a framework.
+
+11
+00:01:15.532 --> 00:01:18.950
+A direct model call: one prompt, one response.
+
+12
+00:01:18.950 --> 00:01:27.494
+In the estate, the model rewrites a delay notice — it does not decide that the delivery may be cancelled,
+
+13
+00:01:27.494 --> 00:01:33.475
+and a call that is allowed to invent the window has left the pattern.
+
+14
+00:01:33.475 --> 00:01:39.883
+The augmented LLM: one model that retrieves, calls tools, and remembers, inside an iteration limit.
+
+15
+00:01:39.883 --> 00:01:49.282
+Its tools are outbound ports to owning services — ‘get delivery status’ is fine; ‘update the deliveries table’ crosses the database-per-service line.
+
+16
+00:01:49.282 --> 00:01:55.690
+The quality of the system sits in the tools as much as in the prompt.
+
+17
+00:01:55.690 --> 00:02:03.380
+And retrieval-augmented generation — named by Lewis and colleagues in 2020 — fetches passages, then answers from them.
+
+18
+00:02:03.380 --> 00:02:12.779
+The index is a read model, fed by a published language; if it copies every service’s tables, it is a shared database.
+
+19
+00:02:12.779 --> 00:02:19.187
+Tenant trimming happens at retrieval, not after. The model is not the system of record.
+
+20
+00:02:19.787 --> 00:02:32.519
+Prompt chaining: a fixed sequence of calls, each taking the last output, with a programmatic gate between steps — draft the notice, check it names the right window, shorten it, translate it.
+
+21
+00:02:32.519 --> 00:02:44.456
+A chain is not yet a saga; the moment a step charges a card, that step is a command on the owning service and needs an outbox and a compensation.
+
+22
+00:02:44.456 --> 00:02:56.790
+Routing: classify the input once, up front, and send it down a prepared path — the categories are the bounded contexts, and a wrong class means the aggregate’s rule never runs.
+
+23
+00:02:56.790 --> 00:03:01.565
+Parallelization: independent calls run together and joined, by sectioning or by voting.
+
+24
+00:03:01.565 --> 00:03:11.114
+It resembles API composition, except that judgments can conflict without either call having failed — so the join policy is part of the pattern.
+
+25
+00:03:11.114 --> 00:03:23.051
+And voting on whether a delivery may be cancelled is the wrong use: that rule is on the entity, and a vote of models would replace it with a tally.
+
+26
+00:03:23.651 --> 00:03:34.031
+Orchestrator-workers: a central model invents the subtasks at runtime and synthesizes the results — saga orchestration whose steps are proposed per input.
+
+27
+00:03:34.031 --> 00:03:44.883
+Fine for a question over an unknown set of read-only sources; wrong for ‘cancel and refund’, whose steps are known and have compensations.
+
+28
+00:03:44.883 --> 00:03:51.017
+The pattern chooses the calls. It does not receive a private write path.
+
+29
+00:03:51.017 --> 00:03:57.623
+Evaluator-optimizer, or maker-checker: one model drafts, another critiques against explicit criteria, until a cap.
+
+30
+00:03:57.623 --> 00:04:10.362
+Good for a notice that has not been sent; useless once a fact is committed — criticism is for an artifact still inside the AI system’s boundary.
+
+31
+00:04:10.362 --> 00:04:16.024
+Group chat: several agents in one thread under a manager, typically read-only.
+
+32
+00:04:16.024 --> 00:04:21.686
+The thread is an audit log; the manager should be the writer.
+
+33
+00:04:21.686 --> 00:04:33.010
+Handoff: one active agent transfers the whole task when it meets a limit — capped transfers, state carried by identity, and no privilege upgrade.
+
+34
+00:04:33.010 --> 00:04:43.390
+And magentic orchestration, from Microsoft’s Magentic-One: a manager keeps a task ledger, replans when progress stalls, and sends workers at external systems.
+
+35
+00:04:43.390 --> 00:04:51.411
+The ledger is a plan; a saga log is history. The ledger does not replace that history.
+
+36
+00:04:52.011 --> 00:05:02.141
+The autonomous agent: the model directs its own process and tools until the task ends, a person stops it, or a turn limit is reached.
+
+37
+00:05:02.141 --> 00:05:11.866
+Its ground truth is the tool result — a model that treats a timeout as ‘the delivery must be cancelled’ has ignored the environment.
+
+38
+00:05:11.866 --> 00:05:20.375
+It lives most safely inside one capability, with tools that are queries and drafts; the aggregate rules stay in the services.
+
+39
+00:05:20.375 --> 00:05:29.290
+And the human checkpoint: a designed stop, scoped to the sensitive tool — summarize without approval, refund only after a person approves.
+
+40
+00:05:29.290 --> 00:05:33.342
+The approval is an authorization decision, recorded as audit logging.
+
+41
+00:05:33.342 --> 00:05:39.015
+The pending action is a business state of the service that will perform it.
+
+42
+00:05:39.015 --> 00:05:43.067
+A checkpoint that nobody can see is not the pattern.
+
+43
+00:05:43.667 --> 00:05:52.759
+These patterns are control structures for model calls. The microservice baseline is still the control structure for business facts.
+
+44
+00:05:52.759 --> 00:05:58.023
+A prompt chain does not become a saga by having steps.
+
+45
+00:05:58.023 --> 00:06:07.593
+A retrieval index does not become the owner of a delivery by holding passages about it. Similarity is not identity.
+
+46
+00:06:07.593 --> 00:06:17.163
+And what an implementation still owes the baseline is the baseline’s own list: timeouts, retries, and breakers on model calls;
+
+47
+00:06:17.163 --> 00:06:26.734
+validated output; checkpointed state; logs, metrics, and traces per call and per handoff; doubles for tools and rubrics for orchestrations.
+
+48
+00:06:26.734 --> 00:06:30.084
+None of that moves the service boundary.
+
+49
+00:06:30.684 --> 00:06:37.550
+A claim can now name a pattern in this list and a decision in the baseline, separately.
+
+50
+00:06:37.550 --> 00:06:44.821
+A direct call inside notification; a retrieval index owned by delivery; a router in front of existing contexts;
+
+51
+00:06:44.821 --> 00:06:52.899
+a saga whose coordinator is still designed by hand; and a magentic ledger that can refund without the accounts service.
+
+52
+00:06:52.899 --> 00:07:01.381
+Five different claims. Only the last has moved a business boundary — and it has moved it by bypassing the owner.
+
+53
+00:07:01.381 --> 00:07:10.671
+Grade a tool by which pattern it implements, which tools can write, who owns the passages it retrieves, and what stops the loop.
+
+54
+00:07:11.271 --> 00:07:20.618
+Three things to carry away. One. Climb the ladder only as far as the requirement demands. Two.
+
+55
+00:07:20.618 --> 00:07:28.865
+An AI pattern and a microservice pattern are two columns; similarity is not identity. Three.
+
+56
+00:07:28.865 --> 00:07:35.462
+The model proposes; the owning service decides; a person approves the irreversible.
+
+57
+00:07:36.062 --> 00:07:41.421
+The last part of the series — what AI actually changed — is still being written.
+
+58
+00:07:41.421 --> 00:07:46.110
+When it is, it will be graded by every rule you have just heard.

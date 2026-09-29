@@ -1,0 +1,177 @@
+WEBVTT
+
+1
+00:00:03.000 --> 00:00:15.411
+A cluster can host a well-cut set of services, one monolith in a single pod, or a distributed monolith of twenty deployments that share a database and release together.
+
+2
+00:00:15.411 --> 00:00:24.826
+The platform will dutifully keep all three running. That is the whole episode in one sentence: Kubernetes is not a microservice architecture.
+
+3
+00:00:25.426 --> 00:00:33.465
+From the point of view of microservices, Kubernetes is a service deployment platform and a built-in discovery fabric.
+
+4
+00:00:33.465 --> 00:00:43.736
+It is where a service instance runs, the thing that starts another copy when one dies, and the stable name other services call.
+
+5
+00:00:43.736 --> 00:00:56.688
+It was designed from Google’s experience with Borg; first commit the 6th of June 2014; version 1.0 with the Cloud Native Computing Foundation on the 21st of July 2015.
+
+6
+00:00:56.688 --> 00:01:04.726
+In Richardson’s language it implements two patterns at once — service instance per container, and service deployment platform.
+
+7
+00:01:04.726 --> 00:01:11.872
+Everything else teams attribute to it is a set of older patterns the platform now performs.
+
+8
+00:01:12.472 --> 00:01:19.924
+A useful way to see the split: two control loops that do not share a subject.
+
+9
+00:01:19.924 --> 00:01:25.048
+The Kubernetes loop compares a declared desired state with the cluster.
+
+10
+00:01:25.048 --> 00:01:31.569
+‘Three pods of this image.’ A node dies; the loop starts a pod elsewhere.
+
+11
+00:01:31.569 --> 00:01:40.884
+A process wedges; a liveness probe fails and the loop replaces it. Its subject is instances, addresses, and resource limits.
+
+12
+00:01:40.884 --> 00:01:49.734
+The domain loop lives inside the service. An aggregate compares a command with its rules and commits or refuses.
+
+13
+00:01:49.734 --> 00:01:59.049
+A saga continues or compensates. Its subject is the business invariant. Kubernetes can restart the process that runs the aggregate.
+
+14
+00:01:59.049 --> 00:02:01.844
+It cannot repair a wrong model.
+
+15
+00:02:02.444 --> 00:02:08.732
+The smallest thing Kubernetes runs is a pod. The usual microservice is not ‘a pod’.
+
+16
+00:02:08.732 --> 00:02:20.050
+It is a capability with its own repository, data, and release, and on the cluster it is usually a Deployment, which keeps a set of identical pods,
+
+17
+00:02:20.050 --> 00:02:28.853
+plus a Service, a durable name in front of whichever pods are ready — sometimes a second Deployment for a worker.
+
+18
+00:02:28.853 --> 00:02:36.399
+Counting Deployments does not count bounded contexts. Pods are disposable, so state belongs in the service’s own store.
+
+19
+00:02:36.399 --> 00:02:45.621
+The platform does not choose the ownership. The team does, by giving that store to one service and not sharing its schema.
+
+20
+00:02:46.221 --> 00:02:56.217
+Kubernetes does not rename the patterns; it runs them. Server-side discovery: one DNS name, forwarded to a ready pod.
+
+21
+00:02:56.217 --> 00:03:06.212
+Service registry and third-party registration: the control plane records which pods match a Service, and the application registers nothing.
+
+22
+00:03:06.212 --> 00:03:15.682
+Health check API: liveness restarts, readiness withholds traffic, startup protects a slow boot. Externalized configuration: ConfigMaps and Secrets.
+
+23
+00:03:15.682 --> 00:03:19.890
+Sidecar: a second container sharing the pod’s network.
+
+24
+00:03:19.890 --> 00:03:28.308
+A narrow bulkhead: CPU and memory limits per pod — not the threads inside a process.
+
+25
+00:03:28.308 --> 00:03:40.408
+And the X axis of the scale cube: the autoscaler adds copies of the same pod; it never splits a service by function.
+
+26
+00:03:41.008 --> 00:03:43.888
+North-south traffic enters through an Ingress.
+
+27
+00:03:43.888 --> 00:03:54.451
+It is a routing front door; it becomes an API gateway only when a team adds authentication, aggregation, and a client-specific shape.
+
+28
+00:03:54.451 --> 00:04:07.895
+East-west traffic gets a service mesh, if the team wants one: retries, timeouts, mutual TLS, traces, in a sidecar proxy — or, in newer meshes, at the node.
+
+29
+00:04:07.895 --> 00:04:10.296
+And identity splits in two.
+
+30
+00:04:10.296 --> 00:04:26.620
+The access token answers ‘may this actor perform this business action?’ The Kubernetes service account answers ‘may this process read this secret?’ Confusing the two leaves either the cluster open or the domain unchecked.
+
+31
+00:04:27.220 --> 00:04:36.558
+A namespace is a scope for names and access. It is not a bounded context — two namespaces can share a database.
+
+32
+00:04:36.558 --> 00:04:44.199
+A network policy can refuse a connection; it is not the design of the calls that are allowed.
+
+33
+00:04:44.199 --> 00:04:56.933
+A rolling update ships one Deployment while others stay put; that is the mechanical half of independent deployability, and Kubernetes will roll twenty Deployments in lockstep if the pipeline asks.
+
+34
+00:04:56.933 --> 00:05:02.451
+Nothing in the API implements a saga, an outbox, API composition, or CQRS.
+
+35
+00:05:02.451 --> 00:05:09.242
+The architecture is in the data ownership and the collaboration, which are invisible to the scheduler.
+
+36
+00:05:09.842 --> 00:05:15.160
+Managed Kubernetes moves the shared-responsibility line: the provider runs the control plane.
+
+37
+00:05:15.160 --> 00:05:28.899
+Services do not become more real on the managed version — only easier to spread across zones, and easier to mistake for an architecture, because the objects are small and numerous.
+
+38
+00:05:28.899 --> 00:05:36.876
+So: an AI claim about microservices has to show a boundary, a private schema, and a collaboration pattern.
+
+39
+00:05:36.876 --> 00:05:45.739
+An AI claim about Kubernetes has to show desired state that matches how the process fails, starts, and is found.
+
+40
+00:05:45.739 --> 00:05:54.160
+Two outputs, often in one pull request — still two decisions, and the scheduler will not review the second.
+
+41
+00:05:54.760 --> 00:06:07.672
+Three things to carry away. One. Kubernetes runs instances and keeps them addressable; it knows nothing about business rules. Two.
+
+42
+00:06:07.672 --> 00:06:16.066
+Two control loops: the platform reconciles desired state; the domain enforces invariants. Three.
+
+43
+00:06:16.066 --> 00:06:25.105
+Namespaces, network policies, and rolling updates are not bounded contexts, contracts, or independent releases.
+
+44
+00:06:25.705 --> 00:06:34.113
+Next: a platform you simply push to. What a PaaS does for a service, and what it will never draw.

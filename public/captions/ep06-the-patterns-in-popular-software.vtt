@@ -1,0 +1,405 @@
+WEBVTT
+
+1
+00:00:02.400 --> 00:00:20.313
+Hello. My name is Mohammad Ali Jaffry. I am an architect. With ten years of architectural experience. Welcome, to this episode. The patterns in popular software.
+
+2
+00:00:33.000 --> 00:00:36.402
+Every pattern in the catalog, shown in software you have used.
+
+3
+00:00:36.782 --> 00:00:47.335
+The examples are chosen on one rule: the company or project wrote the decision down — in an engineering blog, a paper, a talk, or a repository — so the claim can be checked.
+
+4
+00:00:47.715 --> 00:00:50.687
+And every stop has the same four beats.
+
+5
+00:00:51.727 --> 00:00:52.633
+The problem.
+
+6
+00:00:53.673 --> 00:00:54.625
+The pattern.
+
+7
+00:00:55.665 --> 00:00:57.047
+The named case.
+
+8
+00:00:58.087 --> 00:01:02.255
+And the cost — because a pattern with no cost is a slogan.
+
+9
+00:01:03.235 --> 00:01:16.865
+Shopify runs one of the largest Ruby on Rails codebases in existence and kept it a monolith — a modular monolith, with a tool called Packwerk that fails the build when one component reaches into another’s internals.
+
+10
+00:01:17.245 --> 00:01:22.632
+Stack Overflow serves hundreds of millions of page views a month from a single .NET application.
+
+11
+00:01:23.012 --> 00:01:38.523
+And two documented returns: in 2023 Amazon Prime Video moved a serverless monitoring pipeline into one process and cut its infrastructure cost by about ninety percent; in 2018 Segment folded about a hundred and forty services back into one.
+
+12
+00:01:39.223 --> 00:01:50.531
+On the other side, Amazon, Netflix, Uber with about two thousand two hundred critical microservices, and Monzo, a bank built on about fifteen hundred services in Go.
+
+13
+00:01:50.911 --> 00:01:53.964
+The cost of the second choice is the rest of this episode.
+
+14
+00:01:54.944 --> 00:02:02.572
+By capability: Amazon’s service teams organized around what a retailer does; Netflix’s around what a streaming business does.
+
+15
+00:02:02.952 --> 00:02:13.680
+By subdomain: Uber, in 2020, put a domain layer above its two thousand two hundred services — domain-oriented microservice architecture, one gateway per domain, dependencies pointing downward.
+
+16
+00:02:14.060 --> 00:02:20.457
+Service per team: Amazon’s two-pizza teams, Spotify’s squads, Netflix’s full-cycle developers.
+
+17
+00:02:21.157 --> 00:02:30.688
+And the self-contained service: Netflix’s personalization runs offline, nearline, and online, so the homepage is answered from data already at hand.
+
+18
+00:02:31.668 --> 00:02:33.387
+The strangler application.
+
+19
+00:02:34.427 --> 00:02:43.552
+Netflix took from 2009 to January 2016 to strangle its data center — non-member systems first, billing last.
+
+20
+00:02:43.932 --> 00:02:55.821
+Airbnb strangled its Rails monolith, Monorail, from 2018: reads before writes, one endpoint at a time, old and new paths compared side by side with tools like GitHub’s Scientist and Twitter’s Diffy.
+
+21
+00:02:56.521 --> 00:03:15.503
+The anti-corruption layer: Airbnb’s data services wrapped the monolith’s tables behind Thrift interfaces; and Amazon’s consumer business turned off its last Oracle database in October 2019 — about seventy-five hundred databases moved team by team, because since the mandate nobody had read another team’s tables directly.
+
+22
+00:03:16.483 --> 00:03:17.725
+The biggest stop.
+
+23
+00:03:18.765 --> 00:03:26.393
+Database per service: Amazon’s ‘no direct database reads’; Monzo, where each service owns its own Cassandra keyspace.
+
+24
+00:03:26.773 --> 00:03:33.704
+The shared database, kept in the language as a real choice — Shopify’s processes share the shard’s MySQL on purpose.
+
+25
+00:03:34.404 --> 00:03:50.205
+The saga: Microsoft’s eShop reference application places an order across Ordering, Basket, Catalog, and Payment, and its compensation is to move the order to Cancelled; Uber built Cadence and Netflix built Conductor to run long sagas durably.
+
+26
+00:03:50.585 --> 00:03:57.493
+Choreography is eShop’s chain of integration events, and LinkedIn’s Kafka carrying that style at company scale.
+
+27
+00:03:57.873 --> 00:04:03.365
+Orchestration is Conductor, Cadence and its fork Temporal, and AWS Step Functions.
+
+28
+00:04:04.065 --> 00:04:13.527
+The command-side replica: eShop’s Basket keeps catalog prices updated by events; Netflix’s EVCache replicates data across regions.
+
+29
+00:04:13.907 --> 00:04:24.727
+API composition: Amazon’s product page drawing on more than a hundred services; Netflix moving that composition to GraphQL Federation in 2020.
+
+30
+00:04:25.107 --> 00:04:31.400
+CQRS: Twitter’s ‘Timelines at Scale’, 2012 — fan out on write, one Redis fetch on read.
+
+31
+00:04:32.100 --> 00:04:40.227
+Domain events: Stripe’s event feed and Shopify’s webhooks, sold as products; Zalando’s Nakadi with a schema registry inside the company.
+
+32
+00:04:40.607 --> 00:04:49.489
+Event sourcing: the LMAX exchange, journaling every input, and Netflix’s Downloads license service, candid about schema evolution.
+
+33
+00:04:50.469 --> 00:04:56.436
+Write the order, publish OrderPlaced, and crash in between — the order exists and nobody knows.
+
+34
+00:04:56.816 --> 00:05:07.962
+The transactional outbox: eShop writes an integration-event row in the same transaction and publishes it afterwards; Debezium’s outbox router, 2019, made that infrastructure.
+
+35
+00:05:08.342 --> 00:05:19.708
+Transaction log tailing: LinkedIn’s Databus in 2012 is the ancestor; Debezium, Airbnb’s SpinalTap, Netflix’s DBLog, Facebook’s Wormhole are the descendants.
+
+36
+00:05:20.408 --> 00:05:28.663
+The polling publisher: the simplest thing — Richardson’s Eventuate Tram, and Stripe retrying webhook deliveries with backoff for up to three days.
+
+37
+00:05:29.643 --> 00:05:48.706
+Remote procedure invocation: Google’s internal Stubby became gRPC in 2015; Facebook built Thrift in 2007 so PHP, C++, Java, and Python could call each other; Twitter’s Finagle made a service a function from request to future response.
+
+38
+00:05:49.086 --> 00:06:00.894
+Messaging: Kafka, built at LinkedIn in 2010 and open-sourced in 2011; and Amazon SQS, in beta in 2004 and generally available in 2006 — before EC2.
+
+39
+00:06:01.274 --> 00:06:04.733
+Amazon shipped a queue before it shipped a computer.
+
+40
+00:06:05.433 --> 00:06:13.653
+Domain-specific protocols: Facebook Messenger over MQTT, WhatsApp over a compressed XMPP, Discord’s gateway over WebSockets.
+
+41
+00:06:14.033 --> 00:06:22.427
+And the idempotent consumer: Stripe’s idempotency keys, described by Brandur Leach in 2017 — a retry that cannot charge twice.
+
+42
+00:06:23.407 --> 00:06:40.486
+The API gateway: Netflix’s Zuul, open-sourced in 2013 and rebuilt on Netty as Zuul 2 in 2018; Amazon API Gateway and Kong in 2015; Uber’s edge gateway exposing thousands of endpoints from configuration.
+
+43
+00:06:40.866 --> 00:06:55.274
+The backend for frontend: Phil Calçado’s SoundCloud practice, written up by Sam Newman in 2015; Netflix’s device teams writing their own adapter scripts inside the API tier; eShop’s web and mobile aggregators behind Envoy.
+
+44
+00:06:55.654 --> 00:07:05.464
+The rule holds only while one experience has one backend — a backend shared by two clients is a gateway again.
+
+45
+00:07:06.784 --> 00:07:21.482
+Client-side discovery: Netflix’s Eureka and Ribbon, 2012 — the client caches the registry, so a Eureka outage does not stop calls; availability chosen over consistency.
+
+46
+00:07:22.522 --> 00:07:36.454
+Server-side discovery: a Kubernetes Service, a stable name forwarded to a ready pod by kernel rules; AWS load balancers from 2009; Airbnb’s SmartStack with a local HAProxy on every host.
+
+47
+00:07:36.834 --> 00:07:46.308
+The registry itself: Eureka, ZooKeeper, HashiCorp Consul, and etcd — which makes etcd the registry of every Kubernetes cluster without anyone calling it that.
+
+48
+00:07:47.008 --> 00:08:00.406
+Self registration is the Eureka client and its thirty-second heartbeat; third-party registration is Kubernetes writing pod addresses into EndpointSlices, and Netflix’s Prana sidecar registering non-Java processes.
+
+49
+00:08:01.386 --> 00:08:06.947
+Michael Nygard named these in ‘Release It!’, 2007, and Netflix turned them into a library.
+
+50
+00:08:07.327 --> 00:08:23.918
+Hystrix, 2012: the circuit opens when at least twenty requests in a ten-second window fail more than half the time, stays open for five seconds, then tries one call; every command has a fallback, so the homepage lost a row, not the page.
+
+51
+00:08:24.958 --> 00:08:30.507
+It entered maintenance in 2018, and Envoy’s outlier detection now does the job in the proxy.
+
+52
+00:08:31.207 --> 00:08:37.628
+Timeout: gRPC’s deadlines propagate down the chain, so the third service knows how much time is left.
+
+53
+00:08:38.008 --> 00:08:49.049
+Retry: Marc Brooker’s 2015 ‘Exponential Backoff and Jitter’, and Google’s retry budgets — stop retrying when retries exceed ten percent of requests.
+
+54
+00:08:49.429 --> 00:08:59.645
+Bulkhead: Hystrix’s per-dependency thread pools, Shopify’s Semian tickets, and AWS cells — compartments, so one flooding dependency cannot sink the ship.
+
+55
+00:09:00.625 --> 00:09:02.065
+The access token.
+
+56
+00:09:03.105 --> 00:09:18.639
+OAuth 2.0 standardized how a client obtains one, in 2012; JSON Web Token, in 2015, standardized a signed token a service can verify without a network call. eShop’s Identity service issues them and Ordering checks the signature locally.
+
+57
+00:09:19.019 --> 00:09:30.838
+Netflix’s Passport, described in 2021, terminates every kind of device authentication at the edge and mints one short-lived token that travels to every downstream service.
+
+58
+00:09:31.538 --> 00:09:36.879
+And SPIFFE certificates carry the other half: which service is calling, as opposed to on whose behalf.
+
+59
+00:09:37.859 --> 00:09:40.982
+A request is now a path across processes.
+
+60
+00:09:42.022 --> 00:09:54.270
+Log aggregation: the ELK stack, Fluentd on every Kubernetes node, and Grafana Loki, which indexes only labels because full-text indexing had become the largest line item.
+
+61
+00:09:55.310 --> 00:10:05.446
+Metrics: Etsy’s StatsD and ‘Measure Anything, Measure Everything’, 2011; Prometheus, born at SoundCloud, the second project accepted by the CNCF.
+
+62
+00:10:06.146 --> 00:10:12.531
+Audit logging: AWS CloudTrail recording every API call in an account since 2013.
+
+63
+00:10:12.911 --> 00:10:27.052
+Distributed tracing: Google’s Dapper paper in 2010, Twitter’s Zipkin, Uber’s Jaeger, OpenTelemetry in 2019, and Netflix’s Edgar assembling a whole playback session for support.
+
+64
+00:10:27.432 --> 00:10:29.673
+Exception tracking: Sentry.
+
+65
+00:10:30.713 --> 00:10:34.184
+Health checks: Kubernetes probes that separate ‘alive’ from ‘ready’.
+
+66
+00:10:34.564 --> 00:10:39.800
+And logging deployments: Etsy’s Deployinator drew a line on every graph at every deploy.
+
+67
+00:10:40.780 --> 00:10:44.600
+The unit that starts and scales changed three times in twenty years.
+
+68
+00:10:44.980 --> 00:10:54.616
+Several services on one application server, then one service per machine — Google’s 2003 search cluster, one role per host.
+
+69
+00:10:54.996 --> 00:11:06.711
+Then one service per virtual machine: Netflix baking every service into its own machine image from 2011, red-black deploys, never patching a running instance.
+
+70
+00:11:07.751 --> 00:11:19.268
+Then one service per container: Google’s Borg had run everything in cgroups for a decade before the 2015 paper; Docker made the image portable; Kubernetes made the scheduler a commodity.
+
+71
+00:11:19.648 --> 00:11:32.245
+Then the function: AWS Lambda, 2014 — and the boundary of the pattern, Prime Video’s 2023 return to one long-running process.
+
+72
+00:11:33.285 --> 00:11:39.821
+Over all of it, the deployment platform: Heroku’s git push, Kubernetes, and Netflix’s Spinnaker and Titus.
+
+73
+00:11:40.801 --> 00:11:43.030
+Library first, then proxy.
+
+74
+00:11:44.070 --> 00:11:50.363
+The chassis: Dropwizard in 2011, Spring Boot and Spring Cloud Netflix, Monzo’s Typhon.
+
+75
+00:11:50.743 --> 00:12:01.622
+Externalized configuration: the Twelve-Factor rule, Netflix’s Archaius tuning Hystrix thresholds live, Kubernetes ConfigMaps and Secrets, HashiCorp Vault leasing credentials.
+
+76
+00:12:02.322 --> 00:12:06.222
+The service template: Spotify’s Backstage and its golden path.
+
+77
+00:12:06.602 --> 00:12:21.045
+The sidecar: Netflix’s Prana in 2014, then Envoy from Lyft in 2016, injected into every pod by Istio in 2017 — Burns and Oppenheimer named sidecar, ambassador, and adapter as the container patterns in 2016.
+
+78
+00:12:21.425 --> 00:12:29.413
+The service mesh: Linkerd gave the category its name in February 2016; Istio paired Envoy with a control plane.
+
+79
+00:12:30.113 --> 00:12:37.985
+The ambassador: Google’s Cloud SQL Auth Proxy — the app talks to localhost and never sees a certificate.
+
+80
+00:12:39.305 --> 00:12:42.637
+Four hundred services cannot be stood up on a laptop.
+
+81
+00:12:43.017 --> 00:12:55.637
+Consumer-driven contracts: Pact, written in 2013 for REA Group, whose Ruby services kept breaking each other; the Pact Broker’s ‘can I deploy’ check; Spring Cloud Contract with the artifact flowing the other way.
+
+82
+00:12:56.017 --> 00:13:02.007
+Consumer-side tests against stubs derived from the contract — WireMock when there is no framework.
+
+83
+00:13:03.047 --> 00:13:17.235
+And the service component test: Testcontainers starting a real Postgres or Kafka for one test; Shopify’s Toxiproxy injecting latency to ask what the service does when Redis is slow, not only when it is gone.
+
+84
+00:13:18.555 --> 00:13:22.700
+Four teams own the product, the price, the reviews, and the recommendations.
+
+85
+00:13:23.080 --> 00:13:37.743
+Server-side fragments: Facebook’s BigPipe, 2010, streaming pagelets as each is ready; Zalando’s Mosaic and Tailor for a company of many teams; Edge Side Includes assembling a page in the cache since 2001.
+
+86
+00:13:38.123 --> 00:13:54.029
+Client-side composition: Spotify’s desktop client built from squad-owned web views; micro-frontends, on the Thoughtworks radar in 2016 and written up by Cam Jackson in 2019; single-spa; webpack’s Module Federation removing the iframe in 2020.
+
+87
+00:13:55.009 --> 00:14:00.071
+Three observations travel forward from these sixty-one stops.
+
+88
+00:14:01.111 --> 00:14:11.815
+First, the data patterns — saga, outbox, replica, CQRS — were designed by hand in every case, with the business rule and the compensation written by someone who knew the domain.
+
+89
+00:14:12.195 --> 00:14:22.690
+Second, the reliability and discovery patterns have already moved once, from Netflix’s libraries into Envoy and the mesh — so ‘where does the pattern live’ is a question with precedent.
+
+90
+00:14:23.390 --> 00:14:32.168
+Third, several companies moved back — Segment, Prime Video, Shopify never left — and each gave a cost as the reason.
+
+91
+00:14:33.208 --> 00:14:37.271
+Any account of AI’s influence has to say which of these three it touched.
+
+92
+00:14:38.251 --> 00:14:40.306
+Three things to carry away.
+
+93
+00:14:41.346 --> 00:14:41.915
+One.
+
+94
+00:14:42.955 --> 00:14:46.473
+Each pattern has a named case and a documented cost.
+
+95
+00:14:47.173 --> 00:14:47.660
+Two.
+
+96
+00:14:48.700 --> 00:14:55.341
+Data patterns were hand-designed everywhere; reliability patterns have already moved once, from libraries into the mesh.
+
+97
+00:14:55.721 --> 00:14:56.487
+Three.
+
+98
+00:14:57.527 --> 00:15:01.568
+Several companies moved back — and each gave a cost as the reason.
+
+99
+00:15:02.548 --> 00:15:05.021
+Next: inside one service.
+
+100
+00:15:06.061 --> 00:15:10.136
+Where does a service end, and who decides?
+
+101
+00:15:11.176 --> 00:15:14.717
+Domain-driven design, with a delivery drone.

@@ -1,0 +1,265 @@
+WEBVTT
+
+1
+00:00:02.400 --> 00:00:22.298
+Hello. My name is Mohammad Ali Jaffry. I am an architect. With ten years of architectural experience. Welcome, to this episode. Implementing microservices, with domain-driven design as the model.
+
+2
+00:00:33.000 --> 00:00:35.392
+A delivery drone drops a package.
+
+3
+00:00:36.432 --> 00:00:43.247
+Here is a business rule: a customer can cancel a delivery only until the drone has picked the package up.
+
+4
+00:00:44.287 --> 00:00:46.098
+Where does that rule live?
+
+5
+00:00:47.138 --> 00:00:51.538
+In which service, in which object, checked by whom?
+
+6
+00:00:52.088 --> 00:01:01.306
+Domain-driven design is the school that answers those questions — and this episode follows the rule all the way from the HTTP request to the message that leaves the service.
+
+7
+00:01:02.286 --> 00:01:08.498
+Domain-driven design is a way to implement a microservice, and a way to decide where one service ends.
+
+8
+00:01:08.878 --> 00:01:12.128
+Eric Evans set it out in 2003.
+
+9
+00:01:13.168 --> 00:01:21.888
+Vaughn Vernon’s ‘Implementing Domain-Driven Design’, 2013, is the practical reference the microservice generation used.
+
+10
+00:01:22.588 --> 00:01:32.770
+And Microsoft’s Azure Architecture Center wrote the size rule this research keeps: design a microservice to be no smaller than an aggregate, and no larger than a bounded context.
+
+11
+00:01:33.750 --> 00:01:34.887
+Two passes.
+
+12
+00:01:35.927 --> 00:01:38.528
+Strategic design divides the business.
+
+13
+00:01:39.568 --> 00:01:51.050
+The domain splits into subdomains: a core subdomain the business competes on, supporting subdomains it needs, and generic subdomains that are solved problems, like identity or notification, often bought.
+
+14
+00:01:51.750 --> 00:02:03.627
+Each piece of the model that must stay internally consistent is a bounded context, with its own ubiquitous language — the words the code, the API, and the team share.
+
+15
+00:02:04.667 --> 00:02:08.057
+A bounded context is a candidate for a service.
+
+16
+00:02:09.037 --> 00:02:13.379
+Tactical design builds the model inside that context.
+
+17
+00:02:14.419 --> 00:02:21.873
+An entity has a stable identity over time — this Delivery, that Drone — and the business rules live on it.
+
+18
+00:02:22.253 --> 00:02:28.255
+A value object has no identity — a location, a weight, an amount of money.
+
+19
+00:02:28.955 --> 00:02:39.753
+An aggregate is the consistency boundary: one root entity, child objects reached only through the root, everything saved in one local transaction.
+
+20
+00:02:40.793 --> 00:02:49.187
+A domain service holds logic that belongs to no single entity — the Scheduler that coordinates drone, window, and route.
+
+21
+00:02:49.567 --> 00:02:57.380
+An application service is the use case: it opens the transaction and calls the domain, but does not contain the rule.
+
+22
+00:02:58.420 --> 00:03:01.416
+A domain event names a meaningful change.
+
+23
+00:03:02.456 --> 00:03:06.008
+A repository loads and saves an aggregate by identity.
+
+24
+00:03:06.988 --> 00:03:11.714
+Vernon’s aggregate rules keep the service small enough.
+
+25
+00:03:12.754 --> 00:03:18.686
+Include in the aggregate only what must be consistent in a single transaction.
+
+26
+00:03:19.726 --> 00:03:28.201
+Keep aggregates small — Delivery, Package, Drone, and Account are separate, because each has its own life cycle.
+
+27
+00:03:28.901 --> 00:03:35.844
+Refer to another aggregate by identity: Delivery stores a DroneId, not the Drone.
+
+28
+00:03:36.884 --> 00:03:42.527
+And when a business process crosses aggregates, publish an event and accept that the other side will catch up.
+
+29
+00:03:42.907 --> 00:03:45.217
+That seam is where a saga begins.
+
+30
+00:03:46.537 --> 00:03:48.104
+Now the request.
+
+31
+00:03:49.144 --> 00:03:52.674
+An inbound adapter — the HTTP endpoint — receives it.
+
+32
+00:03:53.054 --> 00:03:57.733
+An application service starts the use case and a local database transaction.
+
+33
+00:03:58.433 --> 00:04:07.117
+The domain enforces the rule: Delivery decides whether it can be cancelled; the application service does not reimplement that decision.
+
+34
+00:04:08.157 --> 00:04:12.116
+The aggregate stores foreign identities only.
+
+35
+00:04:13.156 --> 00:04:20.180
+A repository saves it, and a domain event is recorded in the same transaction, typically through an outbox.
+
+36
+00:04:20.880 --> 00:04:22.749
+The transaction commits.
+
+37
+00:04:23.789 --> 00:04:31.405
+Then a publisher sends an integration event on the broker, and the accounts context can consume it later and raise an invoice.
+
+38
+00:04:31.785 --> 00:04:35.361
+The two contexts are never in one transaction.
+
+39
+00:04:36.681 --> 00:04:44.622
+Inside one service, an in-process domain event can notify another aggregate in the same model — Microsoft’s eShop does this with MediatR.
+
+40
+00:04:45.002 --> 00:04:52.038
+The event that leaves the service is a separate integration event, carried by RabbitMQ or Azure Service Bus.
+
+41
+00:04:52.418 --> 00:04:59.036
+Keeping those two events apart is the implementation of ‘smart endpoints and dumb pipes’ at the level of one codebase.
+
+42
+00:05:00.016 --> 00:05:04.126
+DDD is the right interior when the service holds real business rules.
+
+43
+00:05:04.506 --> 00:05:06.723
+Other interiors sit beside it.
+
+44
+00:05:07.763 --> 00:05:23.054
+Hexagonal architecture — Alistair Cockburn, 2005 — is the packaging: business logic in the middle, inbound adapters and outbound adapters at the edge, and the domain never imports the web framework or the database driver.
+
+45
+00:05:24.094 --> 00:05:33.683
+CQRS, simplified: commands through aggregates, queries as plain SQL, same database — eShop’s ordering service does exactly this.
+
+46
+00:05:34.063 --> 00:05:39.671
+CQRS with a separate read model, when reads must not touch every owner.
+
+47
+00:05:40.711 --> 00:05:47.654
+And the transaction script: check a few fields, write a row, no aggregate — the right choice when the rules are thin.
+
+48
+00:05:48.634 --> 00:05:54.880
+Evans’s context map draws the relationships between contexts, and four of them become integration styles.
+
+49
+00:05:55.260 --> 00:06:00.101
+Open host service with a published language: a stable API and event schema.
+
+50
+00:06:00.481 --> 00:06:05.009
+Customer–supplier: the downstream needs a change and the upstream agrees.
+
+51
+00:06:05.709 --> 00:06:10.411
+Conformist: the downstream accepts the upstream model as it stands.
+
+52
+00:06:10.791 --> 00:06:15.261
+Anti-corruption layer: the downstream translates a foreign model into its own.
+
+53
+00:06:15.641 --> 00:06:20.459
+A command that must cross services is a saga on top of these events.
+
+54
+00:06:21.779 --> 00:06:24.368
+Here is the test the chapter hands forward.
+
+55
+00:06:25.408 --> 00:06:30.459
+A tool that generates a controller and a database table has implemented the thin script.
+
+56
+00:06:30.839 --> 00:06:38.745
+A tool that has implemented DDD has named the aggregates, kept foreign references as identities, and split the domain event from the integration event.
+
+57
+00:06:39.445 --> 00:06:44.971
+Did AI change how boundaries are found, the interior of the service, or the seam between services?
+
+58
+00:06:45.521 --> 00:06:47.832
+Three separate questions.
+
+59
+00:06:49.152 --> 00:06:51.044
+Three things to carry away.
+
+60
+00:06:52.084 --> 00:06:52.699
+One.
+
+61
+00:06:53.739 --> 00:06:58.569
+A service is no smaller than an aggregate and no larger than a bounded context.
+
+62
+00:06:59.269 --> 00:06:59.826
+Two.
+
+63
+00:07:00.866 --> 00:07:05.975
+Refer to other aggregates by identity; cross them with events, not joins.
+
+64
+00:07:07.015 --> 00:07:07.781
+Three.
+
+65
+00:07:08.821 --> 00:07:13.512
+Keep the in-process domain event apart from the integration event that leaves the service.
+
+66
+00:07:14.492 --> 00:07:21.725
+Next: the neighbors of DDD — orange sticky notes, dark energy and dark matter, and the team diagram that becomes the service diagram.

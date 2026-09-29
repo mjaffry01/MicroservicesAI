@@ -1,0 +1,213 @@
+WEBVTT
+
+1
+00:00:02.400 --> 00:00:21.428
+Hello. My name is Mohammad Ali Jaffry. I am an architect. With ten years of architectural experience. Welcome, to this episode. Methods that sit beside domain-driven design.
+
+2
+00:00:33.000 --> 00:00:34.869
+A long roll of paper.
+
+3
+00:00:35.909 --> 00:00:37.790
+Orange sticky notes.
+
+4
+00:00:38.830 --> 00:00:42.069
+On each one, something that happened: OrderPlaced.
+
+5
+00:00:43.109 --> 00:00:44.827
+DeliveryCompleted.
+
+6
+00:00:45.867 --> 00:00:49.768
+People from the business and from engineering building a timeline together.
+
+7
+00:00:50.148 --> 00:00:55.118
+That is EventStorming, and it is one of the neighbors of domain-driven design.
+
+8
+00:00:56.158 --> 00:00:58.282
+DDD is one school.
+
+9
+00:00:59.322 --> 00:01:03.908
+This episode adds the methods that do neighboring jobs — in five groups.
+
+10
+00:01:04.888 --> 00:01:11.099
+Alberto Brandolini described EventStorming in November 2013.
+
+11
+00:01:12.139 --> 00:01:22.194
+Big-picture EventStorming finds where language and interests conflict — which is the clue to a bounded context; design-level EventStorming clusters events into aggregates.
+
+12
+00:01:22.574 --> 00:01:32.756
+Domain Storytelling, by Stefan Hofer and Henning Schwentner, draws the business as numbered picture-stories: a customer places an order, the kitchen prepares it, a rider delivers it.
+
+13
+00:01:33.456 --> 00:01:41.478
+Event Modeling, from Adam Dymitruk, lays one process on a storyboard: commands in, events stored, screens reading views.
+
+14
+00:01:41.858 --> 00:01:49.672
+And behavior-driven development — Dan North, 2006 — writes examples in the domain’s language: given, when, then.
+
+15
+00:01:50.652 --> 00:01:53.914
+A bounded context is a candidate service.
+
+16
+00:01:54.954 --> 00:01:59.656
+These methods decide whether it stays whole, splits, or joins its neighbor.
+
+17
+00:02:00.036 --> 00:02:08.546
+Chris Richardson’s Assemblage, from February 2023, has five steps, and its design step is driven by ten forces with an astronomy metaphor.
+
+18
+00:02:09.246 --> 00:02:19.962
+Dark energy pushes subdomains apart into separate services: simple components, team autonomy, a fast pipeline, multiple technology stacks, different scale or security.
+
+19
+00:02:20.342 --> 00:02:31.430
+Dark matter pulls them back together: simple interactions, efficient interactions, a preference for one transaction over eventual consistency, less runtime coupling, less design-time coupling.
+
+20
+00:02:31.810 --> 00:02:33.598
+The cut is the balance.
+
+21
+00:02:34.918 --> 00:02:46.412
+Business capability mapping names what the business does without naming the systems that do it; the capability is the stable business fact, the bounded context is the model a team can keep consistent.
+
+22
+00:02:46.792 --> 00:03:02.813
+Self-contained systems, from INNOQ, are team-owned vertical slices with their own UI, logic, and data — where a microservice may be only an API, a self-contained system is something a user can actually use.
+
+23
+00:03:03.853 --> 00:03:08.904
+And the scale cube: X runs more copies, Y splits by function, Z partitions data.
+
+24
+00:03:09.604 --> 00:03:14.654
+The cube stops a team from treating ‘make another service’ as the only scaling move.
+
+25
+00:03:15.974 --> 00:03:19.805
+Hexagonal architecture was last episode’s packaging.
+
+26
+00:03:20.845 --> 00:03:23.574
+Two older drawings state the same rule.
+
+27
+00:03:24.614 --> 00:03:31.266
+Onion architecture, Jeffrey Palermo, 2008: the domain at the center, the database and the UI in the outer ring.
+
+28
+00:03:31.966 --> 00:03:33.684
+Clean architecture, Robert C.
+
+29
+00:03:34.724 --> 00:03:47.252
+Martin, 2012 and a book in 2017: concentric circles, and dependencies point inward — the web framework knows the use case; the domain does not know HTTP.
+
+30
+00:03:48.292 --> 00:04:06.902
+Two programming models are alternatives to a rich domain object: Gary Bernhardt’s functional core and imperative shell — pure decisions inside, effects outside — and the actor model, Carl Hewitt, 1973, as Erlang, Akka, and Orleans carry it: isolated units that react to messages and share no memory.
+
+31
+00:04:07.882 --> 00:04:25.785
+Enterprise Integration Patterns, by Gregor Hohpe and Bobby Woolf, published on the 10th of October 2003, is a language of sixty-five patterns for messages: channels, routers, transformers, endpoints; publish-subscribe, dead-letter channel, idempotent receiver.
+
+32
+00:04:26.165 --> 00:04:30.333
+Microservice messaging still uses those names.
+
+33
+00:04:31.373 --> 00:04:41.276
+The Reactive Manifesto, 2014, names four properties of a system built from messages — responsive, resilient, elastic, message-driven.
+
+34
+00:04:41.976 --> 00:04:48.652
+It tells you how the system should behave once the services are separate; it does not tell you where the bounded context is.
+
+35
+00:04:49.972 --> 00:05:04.461
+Team Topologies, by Matthew Skelton and Manuel Pais, 2019, limits a team’s cognitive load and gives four team types — stream-aligned, enabling, complicated-subsystem, and platform — and three interaction modes.
+
+36
+00:05:04.841 --> 00:05:09.114
+Conway’s law is why it matters: the team diagram becomes the service diagram.
+
+37
+00:05:09.494 --> 00:05:22.369
+Data Mesh, Zhamak Dehghani, 2019, applies domain ownership to analytical data — the domain owns the data product, and a central data lake team is the data-world version of the shared database.
+
+38
+00:05:23.069 --> 00:05:28.863
+Micro-frontends apply the same split to the screen: each team ships its own fragment.
+
+39
+00:05:29.843 --> 00:05:33.732
+A later claim can now name which school an AI tool is imitating.
+
+40
+00:05:34.112 --> 00:05:38.059
+Generating classes from a noun list is a thin echo of tactical DDD.
+
+41
+00:05:38.439 --> 00:05:42.201
+Clustering orange events into aggregates is EventStorming.
+
+42
+00:05:43.241 --> 00:05:53.017
+Recommending or refusing a split because two teams deploy independently, or because the operation wants one transaction, is Assemblage’s pair of forces.
+
+43
+00:05:53.397 --> 00:05:58.319
+Proposing a stream-aligned team and a platform team is Team Topologies.
+
+44
+00:05:58.699 --> 00:06:04.388
+The research can ask which of these the tools actually perform, and which they only name.
+
+45
+00:06:05.708 --> 00:06:07.659
+Three things to carry away.
+
+46
+00:06:08.699 --> 00:06:09.325
+One.
+
+47
+00:06:10.365 --> 00:06:19.166
+Workshops find the domain; forces decide the cut; drawings shape the inside; a messaging vocabulary connects; team methods assign ownership.
+
+48
+00:06:19.866 --> 00:06:20.400
+Two.
+
+49
+00:06:21.440 --> 00:06:25.445
+Dark energy pushes services apart; dark matter pulls them together.
+
+50
+00:06:25.825 --> 00:06:26.615
+Three.
+
+51
+00:06:27.655 --> 00:06:34.598
+Later, ask which school an AI tool imitates, and whether it performs the method or only names it.
+
+52
+00:06:35.918 --> 00:06:37.380
+Next: the cloud.
+
+53
+00:06:38.420 --> 00:06:45.584
+Three questions hide under one word — and a monolith on a virtual machine is a cloud deployment of a monolith.

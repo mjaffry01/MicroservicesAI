@@ -1,0 +1,137 @@
+WEBVTT
+
+1
+00:00:03.000 --> 00:00:11.690
+Function as a service. Container as a service. Database, identity, integration, backend, network, security as a service.
+
+2
+00:00:11.690 --> 00:00:19.357
+Here is the calm fact under the rain of acronyms: the official set is three.
+
+3
+00:00:19.357 --> 00:00:25.491
+A new ‘as a service’ name does not create a fourth model.
+
+4
+00:00:26.091 --> 00:00:31.805
+In September 2011, NIST defined software, platform, and infrastructure as a service.
+
+5
+00:00:31.805 --> 00:00:41.328
+Its later evaluation guide sorts any offering by two facts: what is being provided, and who the primary customer is.
+
+6
+00:00:41.328 --> 00:00:50.850
+An end user of a finished application — that is SaaS. A developer or deployer of an application — PaaS.
+
+7
+00:00:50.850 --> 00:00:59.421
+An operator of systems, who needs machines and networks — IaaS. Read every new name by that test.
+
+8
+00:01:00.021 --> 00:01:02.752
+PaaS and SaaS had their own episodes.
+
+9
+00:01:02.752 --> 00:01:10.165
+IaaS is the one left to describe, and from the microservice point of view it is the raw pool.
+
+10
+00:01:10.165 --> 00:01:19.139
+The team can install a cluster, a broker, and a database engine, and run anything it can package; the provider runs the hosts.
+
+11
+00:01:19.139 --> 00:01:24.211
+A virtual machine with a monolith on it is a completed IaaS deployment.
+
+12
+00:01:24.211 --> 00:01:29.674
+A virtual machine with Kubernetes on it is a team-built platform sitting on IaaS.
+
+13
+00:01:29.674 --> 00:01:40.599
+Managed Kubernetes moves part of that work back to the provider and lands between IaaS and PaaS — which is why the industry gave it a further name.
+
+14
+00:01:41.199 --> 00:01:50.091
+Function as a service is PaaS narrowed to a function — Richardson’s serverless deployment; the function may be smaller than a bounded context.
+
+15
+00:01:50.091 --> 00:01:53.570
+Containers as a service sits between IaaS and PaaS.
+
+16
+00:01:53.570 --> 00:02:00.916
+Database as a service is the usual way to give a service its own database without operating the engine.
+
+17
+00:02:00.916 --> 00:02:08.648
+Identity as a service is the access-token pattern, bought — and the tenant still has to be on the token.
+
+18
+00:02:08.648 --> 00:02:15.607
+Integration platform as a service can become the smart bus the 2014 article kept out of the middle.
+
+19
+00:02:15.607 --> 00:02:24.500
+Backend as a service is a shared backend behind client apps — easy to start, easy to become one database for every feature.
+
+20
+00:02:24.500 --> 00:02:27.593
+Storage and network as a service are IaaS.
+
+21
+00:02:27.593 --> 00:02:34.552
+Security as a service is usually SaaS, and it does not replace the tenant check inside the aggregate.
+
+22
+00:02:34.552 --> 00:02:44.217
+AI as a service is Pressman’s AI category consumed as a backing service — calling it is not the same as changing the service boundaries.
+
+23
+00:02:44.817 --> 00:02:55.873
+Two names collide on DaaS: desktop as a service, and data as a service — in this series, the commercial form of a Data Mesh data product.
+
+24
+00:02:55.873 --> 00:03:00.377
+The abbreviation alone does not say which one a document means.
+
+25
+00:03:00.377 --> 00:03:13.071
+And a different list is easy to mix in: NIST’s four deployment models — public, private, community, hybrid — answer where the cloud runs, not what kind of product it is.
+
+26
+00:03:13.071 --> 00:03:16.347
+Deployment model and service model are two columns.
+
+27
+00:03:16.947 --> 00:03:22.052
+An AI suggestion that says ‘use a service’ has to name which model.
+
+28
+00:03:22.052 --> 00:03:30.298
+Generating application code for an end user is SaaS work only if tenancy, metering, and the control plane are in scope.
+
+29
+00:03:30.298 --> 00:03:37.760
+A container and a database binding are PaaS or CaaS work. A network and a machine are IaaS work.
+
+30
+00:03:37.760 --> 00:03:46.006
+Calling a hosted model is AI as a service — a backing service, not a new shape for the order aggregate.
+
+31
+00:03:46.606 --> 00:03:54.430
+Three things to carry away. One. Three NIST models, sorted by who the customer is. Two.
+
+32
+00:03:54.430 --> 00:03:59.809
+Every newer ‘-aaS’ name lands under one of the three. Three.
+
+33
+00:03:59.809 --> 00:04:07.633
+A hosted model is AI as a service — a backing service, not a new aggregate.
+
+34
+00:04:08.233 --> 00:04:17.696
+Next: ‘the system shall be scalable’ is not yet a requirement. Functional, non-functional, and why services get split.

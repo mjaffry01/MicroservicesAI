@@ -1,0 +1,169 @@
+WEBVTT
+
+1
+00:00:02.400 --> 00:00:19.698
+Hello. My name is Mohammad Ali Jaffry. I am an architect. With ten years of architectural experience. Welcome, to this episode. The map of the series.
+
+2
+00:00:33.000 --> 00:00:34.695
+Seventeen answers.
+
+3
+00:00:35.735 --> 00:00:37.581
+One question.
+
+4
+00:00:38.621 --> 00:00:45.250
+This series is about how artificial intelligence has changed the way we build microservices — and about the discipline of proving it.
+
+5
+00:00:46.230 --> 00:00:48.192
+The question is precise.
+
+6
+00:00:49.232 --> 00:00:52.065
+Did AI change microservice architecture?
+
+7
+00:00:53.105 --> 00:00:59.200
+And under that, five headings: design, boundaries, communication, operations, and the tradeoffs that come with all of it.
+
+8
+00:00:59.900 --> 00:01:03.430
+Every episode in this series serves one of those five.
+
+9
+00:01:04.410 --> 00:01:08.799
+The research was written as answers, in the order a researcher needed them.
+
+10
+00:01:09.179 --> 00:01:14.055
+Read for the argument, they fall into a different order, and that order is the series.
+
+11
+00:01:14.435 --> 00:01:17.105
+First the question and its terms.
+
+12
+00:01:18.145 --> 00:01:25.459
+Then the baseline: the history of the style and its pattern language, with every pattern shown in real software.
+
+13
+00:01:26.499 --> 00:01:29.030
+Then the inside of one service.
+
+14
+00:01:30.070 --> 00:01:33.135
+Then the platform underneath and the product on top.
+
+15
+00:01:33.835 --> 00:01:35.925
+Then the yardstick we grade with.
+
+16
+00:01:36.965 --> 00:01:39.612
+Then the AI system and its own patterns.
+
+17
+00:01:40.652 --> 00:01:47.537
+And last, what actually changed: the call to the model acquired an architecture, and the business boundary did not.
+
+18
+00:01:48.857 --> 00:01:51.086
+One rule runs through everything.
+
+19
+00:01:52.126 --> 00:01:56.689
+A claim that AI changed the architecture has to name the decision it changed.
+
+20
+00:01:57.069 --> 00:01:59.298
+Not ‘we added an agent’.
+
+21
+00:02:00.338 --> 00:02:02.044
+Which boundary moved.
+
+22
+00:02:03.084 --> 00:02:04.919
+Which pipe got smarter.
+
+23
+00:02:05.959 --> 00:02:08.687
+Which pattern moved from code into a sidecar.
+
+24
+00:02:09.727 --> 00:02:14.685
+Every chapter ends by fixing one of these rules, and the map collects them all in one table.
+
+25
+00:02:15.665 --> 00:02:18.695
+The map also carries the reference tools.
+
+26
+00:02:19.735 --> 00:02:26.190
+A concordance that lines the nine characteristics of the 2014 article up against the chapters.
+
+27
+00:02:26.570 --> 00:02:32.224
+A master timeline from 1968 to 2026.
+
+28
+00:02:33.264 --> 00:02:38.976
+The cases the series argues from — Amazon, Netflix, Uber, Airbnb, Shopify, Stripe.
+
+29
+00:02:39.356 --> 00:02:41.411
+And a glossary of every term.
+
+30
+00:02:42.451 --> 00:02:45.911
+When a chapter points at another, the map is where you look it up.
+
+31
+00:02:46.891 --> 00:02:50.896
+Watch in order if you can; each episode leans on the ones before it.
+
+32
+00:02:51.276 --> 00:02:55.166
+Every episode ends the same way: three things to carry away.
+
+33
+00:02:55.546 --> 00:02:58.704
+If you remember only those, you have the argument.
+
+34
+00:03:00.024 --> 00:03:01.881
+Three things to carry away.
+
+35
+00:03:02.921 --> 00:03:03.525
+One.
+
+36
+00:03:04.565 --> 00:03:13.354
+Watch in chapter order: question, baseline, inside, platform, yardstick, AI system, then what changed.
+
+37
+00:03:14.394 --> 00:03:14.951
+Two.
+
+38
+00:03:15.991 --> 00:03:19.555
+The spine: a claim must name the decision it changed.
+
+39
+00:03:20.595 --> 00:03:21.361
+Three.
+
+40
+00:03:22.401 --> 00:03:24.445
+What moved is the call to the model.
+
+41
+00:03:25.485 --> 00:03:31.278
+The business boundary, the owner of the fact, and the acceptance of a change stayed put.
+
+42
+00:03:32.598 --> 00:03:35.454
+Next: what this research is for, in three minutes.

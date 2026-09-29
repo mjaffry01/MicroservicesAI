@@ -1,0 +1,161 @@
+WEBVTT
+
+1
+00:00:03.000 --> 00:00:08.948
+One login screen. Many companies behind it, each seeing only its own data.
+
+2
+00:00:08.948 --> 00:00:17.183
+A software-as-a-service system is an application the provider runs and many customers use, without operating the servers themselves.
+
+3
+00:00:17.183 --> 00:00:26.790
+Multi-tenancy is the architectural consequence — and it comes with a list of obligations that no platform will meet for you.
+
+4
+00:00:27.390 --> 00:00:29.703
+NIST states the customer-facing bar.
+
+5
+00:00:29.703 --> 00:00:41.267
+The application is reached through a browser or a program interface; the customer manages nothing but limited user-specific configuration; the five cloud properties still apply.
+
+6
+00:00:41.267 --> 00:00:45.893
+A tenant is one customer organization inside that shared product.
+
+7
+00:00:45.893 --> 00:00:58.844
+A separate copy of the product, installed per customer, can run in a cloud and still fail this test — Amazon’s SaaS guidance calls that a managed service.
+
+8
+00:00:58.844 --> 00:01:05.783
+SaaS has one onboarding path, one identity experience, and one operational life for every tenant.
+
+9
+00:01:06.383 --> 00:01:10.709
+The system divides into two planes, and both are required.
+
+10
+00:01:10.709 --> 00:01:24.120
+The control plane is how the provider runs the tenants as one business: it onboards a tenant, holds the tenant record, authenticates users into a tenant, applies a tier, meters consumption.
+
+11
+00:01:24.120 --> 00:01:31.475
+If the control plane is missing, each tenant has become a private install, whatever the marketing says.
+
+12
+00:01:31.475 --> 00:01:43.588
+The application plane is the product the tenant uses, and it is multi-tenant: every request carries a tenant context, and every read and write is constrained by it.
+
+13
+00:01:43.588 --> 00:01:50.510
+The packaging — monolith or services — is a separate decision. The tenant context is not.
+
+14
+00:01:51.110 --> 00:02:02.795
+The AWS Well-Architected SaaS Lens groups the concerns, and the chapter turns them into obligations. A tenant identity distinct from a user.
+
+15
+00:02:02.795 --> 00:02:12.886
+Tenant context on every request, message, log line, and trace. Isolation — a security property and a performance property.
+
+16
+00:02:12.886 --> 00:02:26.164
+An explicit placement model: silo gives a tenant dedicated resources; pool shares them and enforces the tenant in code and data; bridge mixes the two.
+
+17
+00:02:26.164 --> 00:02:35.724
+Data partitioning that matches the model, so one tenant can be backed up, restored, or deleted. Automated onboarding.
+
+18
+00:02:35.724 --> 00:02:47.409
+Tiers, as product and placement decisions. Noisy-neighbor control — quotas and rate limits, the bulkhead at tenant grain. Measured use. Tenant-aware operations.
+
+19
+00:02:47.409 --> 00:02:52.720
+Limited configuration, not a fork. And a way to leave.
+
+20
+00:02:53.320 --> 00:03:02.124
+SaaS does not require microservices; a single application can meet every obligation. Microservices change where the requirements have to be repeated.
+
+21
+00:03:02.124 --> 00:03:09.252
+The access token now carries the tenant, believed from the control plane rather than from the client.
+
+22
+00:03:09.252 --> 00:03:13.444
+Every message on the broker needs the same tenant context.
+
+23
+00:03:13.444 --> 00:03:26.441
+Database per service still holds, and inside each schema the tenant model is a second cut — one service pooled, another siloed: the bridge model, legal and easy to get wrong.
+
+24
+00:03:26.441 --> 00:03:33.988
+The control plane behaves like the platform team: onboarding, tiers, and metering are not rebuilt in every context.
+
+25
+00:03:33.988 --> 00:03:39.438
+And the aggregate has to check the tenant as well as the rule.
+
+26
+00:03:39.438 --> 00:03:52.435
+An aggregate that checks ‘may this delivery be cancelled?’ and never checks ‘does this delivery belong to the tenant on the token?’ has enforced the domain and missed the SaaS requirement.
+
+27
+00:03:53.035 --> 00:03:56.561
+Kubernetes and the cloud sit under both planes.
+
+28
+00:03:56.561 --> 00:04:03.614
+They can silo a tenant by namespace, cluster, or account, and pool tenants on one Deployment.
+
+29
+00:04:03.614 --> 00:04:10.667
+They do not put the tenant on the request, and they do not partition the rows.
+
+30
+00:04:10.667 --> 00:04:17.720
+A network policy can separate siloed namespaces. It cannot separate two tenants that share a table.
+
+31
+00:04:18.320 --> 00:04:25.957
+A generated service that stores orders and exposes an API can look complete and still be a single-tenant program.
+
+32
+00:04:25.957 --> 00:04:33.997
+The SaaS obligations are visible in a few places: a tenant on the token, a tenant predicate on every query,
+
+33
+00:04:33.997 --> 00:04:40.830
+a control-plane record that can create and delete that tenant, a meter, and a stated silo-or-pool choice.
+
+34
+00:04:40.830 --> 00:04:45.252
+An AI claim about a SaaS system has to show those.
+
+35
+00:04:45.252 --> 00:04:50.879
+A system can satisfy the microservice claim and miss this one, or the reverse.
+
+36
+00:04:51.479 --> 00:04:54.645
+Three things to carry away. One.
+
+37
+00:04:54.645 --> 00:05:04.669
+SaaS means one product for many tenants — with a control plane that onboards, tiers, and meters them. Two.
+
+38
+00:05:04.669 --> 00:05:11.001
+Tenant context rides on every request, message, log line, and query. Three.
+
+39
+00:05:11.001 --> 00:05:17.860
+Microservices repeat the tenant obligations in every service; the platform cannot supply them.
+
+40
+00:05:18.460 --> 00:05:26.448
+Next: there is no fourth ‘as a service’. Three models, sorted by who the customer is.

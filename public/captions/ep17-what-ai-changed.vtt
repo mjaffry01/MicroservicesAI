@@ -1,0 +1,873 @@
+WEBVTT
+
+1
+00:00:02.400 --> 00:00:19.744
+Hello. My name is Mohammad Ali Jaffry. I am an architect. With ten years of architectural experience. Welcome, to this episode. What AI changed.
+
+2
+00:00:33.000 --> 00:00:35.496
+Here is the whole film, before the proof.
+
+3
+00:00:36.536 --> 00:00:39.775
+Artificial intelligence changed the call to a model.
+
+4
+00:00:40.815 --> 00:00:43.335
+It did not draw the business boundary.
+
+5
+00:00:44.375 --> 00:00:46.987
+It did not become the owner of the fact.
+
+6
+00:00:48.027 --> 00:00:51.138
+And a person still accepts the change.
+
+7
+00:00:52.458 --> 00:00:53.910
+Five questions.
+
+8
+00:00:54.950 --> 00:00:55.925
+One answer.
+
+9
+00:00:56.965 --> 00:00:57.963
+Design.
+
+10
+00:00:59.003 --> 00:01:00.397
+Boundaries.
+
+11
+00:01:01.437 --> 00:01:02.342
+The pipes.
+
+12
+00:01:03.382 --> 00:01:04.636
+Operations.
+
+13
+00:01:05.676 --> 00:01:06.651
+And the bill.
+
+14
+00:01:07.691 --> 00:01:11.604
+Every question is graded against a case a company wrote down.
+
+15
+00:01:11.984 --> 00:01:15.757
+If a sentence is wider than the work it describes, we keep the narrower one.
+
+16
+00:01:16.457 --> 00:01:19.464
+Silence is not evidence that the decision moved.
+
+17
+00:01:20.784 --> 00:01:22.015
+Walk the dates.
+
+18
+00:01:23.055 --> 00:01:25.110
+July 2024.
+
+19
+00:01:26.150 --> 00:01:28.472
+Uber puts one door in front of every model.
+
+20
+00:01:29.172 --> 00:01:30.321
+November.
+
+21
+00:01:31.361 --> 00:01:34.658
+Anthropic publishes a standard port for tools.
+
+22
+00:01:35.698 --> 00:01:38.311
+February 2025.
+
+23
+00:01:39.351 --> 00:01:43.426
+A proxy, in the Envoy family, does the same job in public.
+
+24
+00:01:43.806 --> 00:01:44.688
+April.
+
+25
+00:01:45.728 --> 00:01:48.398
+Google announces a pipe between agents.
+
+26
+00:01:49.438 --> 00:01:50.170
+May.
+
+27
+00:01:51.210 --> 00:01:55.018
+GitHub’s agent opens a pull request, and then it waits.
+
+28
+00:01:55.398 --> 00:01:56.361
+July.
+
+29
+00:01:57.401 --> 00:02:00.873
+In Malaysia, a workshop draws six services.
+
+30
+00:02:01.913 --> 00:02:02.981
+August.
+
+31
+00:02:04.021 --> 00:02:08.851
+Shopify keeps one agent, and has to teach the judge not to cheat.
+
+32
+00:02:09.891 --> 00:02:12.503
+May 2026.
+
+33
+00:02:13.543 --> 00:02:17.351
+Netflix measures a smart router, and takes it off the path.
+
+34
+00:02:17.731 --> 00:02:18.695
+July.
+
+35
+00:02:19.735 --> 00:02:22.730
+The models move into the platform Netflix already ran.
+
+36
+00:02:23.710 --> 00:02:26.380
+Start with the inside of a service.
+
+37
+00:02:27.420 --> 00:02:32.041
+QRRA had a Java monolith, and an Oracle database, and a sale day that hurt.
+
+38
+00:02:32.421 --> 00:02:34.697
+Eight thousand items.
+
+39
+00:02:35.737 --> 00:02:37.966
+Two thousand orders in an hour.
+
+40
+00:02:39.006 --> 00:02:44.091
+They slowed the door to fifty orders a batch, and bought stability by giving up speed.
+
+41
+00:02:44.471 --> 00:02:46.224
+Then people sat down.
+
+42
+00:02:47.264 --> 00:02:48.135
+Product.
+
+43
+00:02:49.175 --> 00:02:50.185
+Engineering.
+
+44
+00:02:51.225 --> 00:02:52.444
+Architects.
+
+45
+00:02:53.484 --> 00:02:55.527
+They ran Event Storming.
+
+46
+00:02:56.567 --> 00:02:57.647
+Events.
+
+47
+00:02:58.687 --> 00:02:59.743
+Commands.
+
+48
+00:03:00.783 --> 00:03:02.780
+Aggregates.
+
+49
+00:03:03.820 --> 00:03:05.771
+Six bounded contexts.
+
+50
+00:03:06.811 --> 00:03:09.806
+That is a human design, and it is a good one.
+
+51
+00:03:10.846 --> 00:03:14.213
+It follows the business, and it follows a measured peak.
+
+52
+00:03:15.193 --> 00:03:16.319
+Now the tool.
+
+53
+00:03:17.359 --> 00:03:22.561
+Amazon Q Developer, in the section that describes the tool, writes the deployment code.
+
+54
+00:03:22.941 --> 00:03:26.226
+Console clicks become infrastructure as code.
+
+55
+00:03:27.266 --> 00:03:28.462
+Three days.
+
+56
+00:03:29.502 --> 00:03:31.127
+That is construction.
+
+57
+00:03:32.167 --> 00:03:33.433
+That is packaging.
+
+58
+00:03:34.473 --> 00:03:40.487
+The last paragraph of the same post says the tool turned the monolith into six services in those three days.
+
+59
+00:03:40.867 --> 00:03:43.514
+The workshop section does not say that.
+
+60
+00:03:44.554 --> 00:03:46.922
+The research keeps them apart.
+
+61
+00:03:47.962 --> 00:03:51.016
+A generated manifest is not the architecture.
+
+62
+00:03:52.336 --> 00:03:56.005
+GitHub, the nineteenth of May, 2025.
+
+63
+00:03:57.045 --> 00:03:59.425
+You assign an issue to Copilot.
+
+64
+00:04:00.465 --> 00:04:02.473
+It reads the repository.
+
+65
+00:04:03.513 --> 00:04:06.125
+It opens a draft pull request.
+
+66
+00:04:07.165 --> 00:04:09.638
+And then the rules close around it.
+
+67
+00:04:10.678 --> 00:04:13.767
+It may push only to a branch it created.
+
+68
+00:04:14.807 --> 00:04:17.094
+You cannot approve your own request.
+
+69
+00:04:18.134 --> 00:04:21.477
+The build does not run until a person says so.
+
+70
+00:04:22.517 --> 00:04:25.037
+The pipeline is still a human checkpoint.
+
+71
+00:04:26.077 --> 00:04:28.178
+The agent can prepare a change.
+
+72
+00:04:29.218 --> 00:04:30.994
+It cannot accept it.
+
+73
+00:04:32.314 --> 00:04:34.915
+Shopify’s Sidekick lives in the admin.
+
+74
+00:04:35.955 --> 00:04:37.058
+One loop.
+
+75
+00:04:38.098 --> 00:04:39.665
+A person speaks.
+
+76
+00:04:40.705 --> 00:04:42.366
+The model chooses a tool.
+
+77
+00:04:43.406 --> 00:04:44.729
+The tool runs.
+
+78
+00:04:45.769 --> 00:04:47.278
+The result comes back.
+
+79
+00:04:48.318 --> 00:04:49.712
+They published the scale.
+
+80
+00:04:50.752 --> 00:04:53.828
+Under twenty tools, the behavior is clear.
+
+81
+00:04:54.868 --> 00:04:58.572
+Between twenty and fifty, the boundaries blur.
+
+82
+00:04:59.612 --> 00:05:04.012
+Past fifty, the prompt becomes what they call death by a thousand instructions.
+
+83
+00:05:04.392 --> 00:05:05.994
+And here is the decision.
+
+84
+00:05:07.034 --> 00:05:09.124
+They did not split the agent.
+
+85
+00:05:10.164 --> 00:05:13.380
+They said a single agent can hold more than a team expects.
+
+86
+00:05:13.760 --> 00:05:16.616
+The fashionable cut was the one they refused.
+
+87
+00:05:17.936 --> 00:05:19.387
+Then the model cheated.
+
+88
+00:05:20.427 --> 00:05:25.780
+Asked for customers whose status is enabled, it filtered on a tag that merely contained the word.
+
+89
+00:05:26.160 --> 00:05:28.876
+The store already had a field for that.
+
+90
+00:05:29.916 --> 00:05:33.004
+The store’s language was the authority.
+
+91
+00:05:34.044 --> 00:05:37.713
+Shopify did not cut a new service to hold the wrong fact.
+
+92
+00:05:38.753 --> 00:05:41.249
+They taught the judge the cheat.
+
+93
+00:05:42.289 --> 00:05:46.051
+Syntax checks rose from about ninety-three percent to about ninety-nine.
+
+94
+00:05:46.431 --> 00:05:49.008
+The judge moved closer to the people.
+
+95
+00:05:50.048 --> 00:05:51.790
+The shop did not move at all.
+
+96
+00:05:53.110 --> 00:05:55.316
+Boundaries, and data.
+
+97
+00:05:56.356 --> 00:06:00.350
+Netflix’s platform does not keep the business database.
+
+98
+00:06:01.390 --> 00:06:05.105
+At request time it calls the services that own the facts.
+
+99
+00:06:05.805 --> 00:06:08.208
+For training, it keeps snapshots.
+
+100
+00:06:09.248 --> 00:06:12.789
+A snapshot that someone else writes would be a shared database.
+
+101
+00:06:13.169 --> 00:06:16.606
+The post describes calls, and copies for reading.
+
+102
+00:06:17.646 --> 00:06:19.480
+Not a second writer.
+
+103
+00:06:20.520 --> 00:06:22.354
+GenRec goes further.
+
+104
+00:06:23.394 --> 00:06:28.364
+An unconstrained model invents titles that are not in the catalog.
+
+105
+00:06:29.404 --> 00:06:33.583
+So the ranker scores only titles that exist.
+
+106
+00:06:34.623 --> 00:06:38.071
+The legal set of identities stays a set the business owns.
+
+107
+00:06:39.051 --> 00:06:40.282
+Now the pipes.
+
+108
+00:06:41.322 --> 00:06:43.191
+This is the center of the film.
+
+109
+00:06:44.231 --> 00:06:49.305
+Netflix built Switchboard, and every client had to pass through it.
+
+110
+00:06:50.005 --> 00:06:51.003
+It routed.
+
+111
+00:06:52.043 --> 00:06:53.680
+It enriched.
+
+112
+00:06:54.720 --> 00:06:57.971
+It split traffic for experiments.
+
+113
+00:06:59.011 --> 00:07:05.211
+It also sat on the path of more than thirty services, in front of a platform doing a million requests a second.
+
+114
+00:07:05.591 --> 00:07:07.355
+The cost, written down.
+
+115
+00:07:08.395 --> 00:07:10.369
+Ten to twenty milliseconds.
+
+116
+00:07:11.409 --> 00:07:13.023
+Some clients timed out.
+
+117
+00:07:14.063 --> 00:07:18.475
+A noisy neighbor, or one defect, and every experience behind it degraded.
+
+118
+00:07:18.855 --> 00:07:20.550
+That is the old warning.
+
+119
+00:07:21.590 --> 00:07:24.132
+A pipe that knows too much fails for everyone.
+
+120
+00:07:25.112 --> 00:07:27.539
+They did not throw the policy away.
+
+121
+00:07:28.579 --> 00:07:30.402
+They took it off the bytes.
+
+122
+00:07:31.442 --> 00:07:33.624
+Lightbulb answers a small question.
+
+123
+00:07:34.664 --> 00:07:35.744
+Which model.
+
+124
+00:07:36.784 --> 00:07:38.456
+Which experiment.
+
+125
+00:07:39.496 --> 00:07:44.279
+Envoy, already sitting on the way out of every application, carries the payload.
+
+126
+00:07:44.979 --> 00:07:48.938
+The body is not opened in the middle, just to choose a door.
+
+127
+00:07:49.978 --> 00:07:52.730
+The pipe that carries the payload is Envoy.
+
+128
+00:07:53.770 --> 00:07:55.360
+Smart endpoints.
+
+129
+00:07:56.400 --> 00:07:57.538
+A dumb pipe.
+
+130
+00:07:58.578 --> 00:08:03.118
+Said again, in 2026, because a model router had forgotten it.
+
+131
+00:08:04.098 --> 00:08:08.057
+Uber’s door is older, and it is honest about its thickness.
+
+132
+00:08:08.437 --> 00:08:10.573
+One Go service.
+
+133
+00:08:11.613 --> 00:08:14.062
+Callers speak the OpenAI shape.
+
+134
+00:08:15.102 --> 00:08:17.355
+The gateway speaks to the vendors.
+
+135
+00:08:18.395 --> 00:08:23.852
+Before a third party sees a request, personal data is replaced, and restored on the way home.
+
+136
+00:08:24.232 --> 00:08:25.985
+That is logic in the pipe.
+
+137
+00:08:27.025 --> 00:08:28.778
+It is not a saga.
+
+138
+00:08:29.818 --> 00:08:33.440
+It does not decide that a trip is finished.
+
+139
+00:08:34.480 --> 00:08:36.454
+About thirty teams.
+
+140
+00:08:37.494 --> 00:08:40.849
+Sixteen million queries a month.
+
+141
+00:08:41.889 --> 00:08:45.825
+The redactor costs latency, and it costs the quality of the answer.
+
+142
+00:08:46.205 --> 00:08:47.702
+They published the tax.
+
+143
+00:08:48.742 --> 00:08:54.791
+In February 2025, Bloomberg and Tetrate shipped the same idea as a proxy.
+
+144
+00:08:55.171 --> 00:08:56.553
+One API.
+
+145
+00:08:57.593 --> 00:08:59.102
+Many providers.
+
+146
+00:09:00.142 --> 00:09:03.358
+And in April, Google announced a pipe between agents.
+
+147
+00:09:03.738 --> 00:09:07.569
+PayPal, Salesforce, and ServiceNow were in the room.
+
+148
+00:09:08.609 --> 00:09:12.325
+No compensation was published.
+
+149
+00:09:13.365 --> 00:09:18.009
+A new pipe can exist, and still not be the broker of these estates.
+
+150
+00:09:19.329 --> 00:09:20.594
+Operations.
+
+151
+00:09:21.634 --> 00:09:23.294
+Keep the loops apart.
+
+152
+00:09:24.334 --> 00:09:27.028
+The platform loop reconciles a deployment.
+
+153
+00:09:28.068 --> 00:09:28.881
+Health.
+
+154
+00:09:29.921 --> 00:09:31.174
+Scale.
+
+155
+00:09:32.214 --> 00:09:33.120
+Rollback.
+
+156
+00:09:34.160 --> 00:09:35.646
+The pin of the engine.
+
+157
+00:09:36.686 --> 00:09:41.156
+The domain loop enforces the business rule, in the service that owns the fact.
+
+158
+00:09:41.536 --> 00:09:44.682
+The decode loop only chooses the next token.
+
+159
+00:09:45.722 --> 00:09:51.144
+Netflix put a mask in that third loop, so an illegal token is never chosen.
+
+160
+00:09:52.184 --> 00:09:53.101
+Useful.
+
+161
+00:09:54.141 --> 00:09:54.954
+Narrow.
+
+162
+00:09:55.994 --> 00:09:59.349
+It cannot decide that a picked-up delivery stays active.
+
+163
+00:10:00.329 --> 00:10:03.000
+Here is a failure the old tests miss.
+
+164
+00:10:04.040 --> 00:10:06.257
+A caller asked for JSON.
+
+165
+00:10:07.297 --> 00:10:12.510
+The front door accepted the request, dropped the constraint, and returned ordinary text.
+
+166
+00:10:13.210 --> 00:10:14.324
+No error.
+
+167
+00:10:15.364 --> 00:10:18.313
+A retry would have retried the wrong success.
+
+168
+00:10:19.353 --> 00:10:20.538
+They patched it.
+
+169
+00:10:21.578 --> 00:10:23.017
+The lesson is sharp.
+
+170
+00:10:24.057 --> 00:10:27.401
+A timeout does not notice a well formed wrongness.
+
+171
+00:10:28.441 --> 00:10:31.552
+The contract has to be checked.
+
+172
+00:10:32.592 --> 00:10:35.704
+Design for failure moved onto the model call.
+
+173
+00:10:36.744 --> 00:10:39.147
+The patterns did not become optional.
+
+174
+00:10:40.187 --> 00:10:42.416
+They live in the platform, and in the proxy.
+
+175
+00:10:43.116 --> 00:10:45.253
+Not as a new excuse to skip them.
+
+176
+00:10:46.573 --> 00:10:48.314
+The new price is the token.
+
+177
+00:10:49.354 --> 00:10:52.338
+GenRec says serving cost tracks the length of the prompt.
+
+178
+00:10:52.718 --> 00:10:56.607
+Cut the tokens to about a third, and the bill falls by about as much.
+
+179
+00:10:57.307 --> 00:11:00.024
+The ranking metric they plot barely moves.
+
+180
+00:11:01.064 --> 00:11:04.280
+The context window is the new feature budget.
+
+181
+00:11:05.320 --> 00:11:10.869
+What used to be a decision about which features to compute is now a decision about which history to keep.
+
+182
+00:11:11.569 --> 00:11:14.170
+And the old price came back with numbers.
+
+183
+00:11:15.210 --> 00:11:17.555
+Those ten to twenty milliseconds.
+
+184
+00:11:18.595 --> 00:11:22.322
+That single point of failure.
+
+185
+00:11:23.362 --> 00:11:27.112
+Shopify’s refusal to split one agent into many.
+
+186
+00:11:28.152 --> 00:11:31.856
+Distribution, measured, and then partly unwound.
+
+187
+00:11:32.896 --> 00:11:34.927
+You have seen this shape before.
+
+188
+00:11:36.247 --> 00:11:38.117
+Nine characteristics.
+
+189
+00:11:39.157 --> 00:11:42.582
+From the article of March 2014.
+
+190
+00:11:43.622 --> 00:11:46.919
+Hold them up to these cases, and only these cases.
+
+191
+00:11:47.959 --> 00:11:54.054
+The business services are still components, still cut around the work, still owned by people who accept the change.
+
+192
+00:11:54.434 --> 00:11:57.708
+The pipe was stressed, and in the measured case it was restored.
+
+193
+00:11:58.088 --> 00:12:00.561
+Governance of the model moved to the center.
+
+194
+00:12:01.601 --> 00:12:04.341
+One door.
+
+195
+00:12:05.381 --> 00:12:06.310
+One engine.
+
+196
+00:12:07.350 --> 00:12:10.775
+A version pin an author may not override.
+
+197
+00:12:11.815 --> 00:12:15.123
+The data did not become a shared writable store.
+
+198
+00:12:16.163 --> 00:12:19.298
+Automation moved, in the development tools.
+
+199
+00:12:20.338 --> 00:12:22.718
+Failure design moved onto the call.
+
+200
+00:12:23.758 --> 00:12:25.384
+Evolution held.
+
+201
+00:12:26.424 --> 00:12:27.991
+Measure the cost.
+
+202
+00:12:29.031 --> 00:12:30.970
+Then pull the hot path back.
+
+203
+00:12:32.290 --> 00:12:35.831
+So the article can say it at this grain, and no wider.
+
+204
+00:12:36.211 --> 00:12:39.346
+People still draw the bounded contexts.
+
+205
+00:12:40.386 --> 00:12:42.406
+People still own the facts.
+
+206
+00:12:43.446 --> 00:12:45.524
+People still accept the change.
+
+207
+00:12:46.564 --> 00:12:49.861
+What acquired an architecture of its own is the call to the model.
+
+208
+00:12:50.241 --> 00:12:53.585
+And the cost of that call now sits inside the microservice premium.
+
+209
+00:12:54.565 --> 00:12:56.840
+Three things to carry away.
+
+210
+00:12:57.880 --> 00:12:58.484
+One.
+
+211
+00:12:59.524 --> 00:13:03.413
+The call to the model acquired a door, a runtime, a proxy, and a bill.
+
+212
+00:13:04.113 --> 00:13:04.647
+Two.
+
+213
+00:13:05.687 --> 00:13:11.458
+The boundary, the owner of the fact, and the person who accepts a change did not move.
+
+214
+00:13:12.498 --> 00:13:13.229
+Three.
+
+215
+00:13:14.269 --> 00:13:18.634
+Where a closing sentence is wider than the work, keep the narrower one.
+
+216
+00:13:19.614 --> 00:13:22.169
+That is the end of what was written down.
+
+217
+00:13:23.209 --> 00:13:26.018
+The article itself is still to be written from this evidence.
+
+218
+00:13:26.398 --> 00:13:28.743
+Thank you for staying to the last line.
