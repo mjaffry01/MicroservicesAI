@@ -2,6 +2,14 @@ export function plain(runs = []) {
   return runs.map((run) => run.t).join("");
 }
 
+export function publicUrl(path) {
+  if (!path) return path;
+  if (/^https?:\/\//i.test(path)) return path;
+  const base = import.meta.env.BASE_URL || "/";
+  const clean = path.startsWith("/") ? path.slice(1) : path;
+  return `${base}${clean}`;
+}
+
 export function episodeLabel(episode) {
   return String(episode).padStart(2, "0");
 }

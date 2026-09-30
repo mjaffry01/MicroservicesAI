@@ -7,6 +7,7 @@ import {
   glossaryMap,
   groupSections,
   loadChapter,
+  publicUrl,
   pullCallouts,
   splitSubsections,
 } from "../lib/text";
@@ -115,7 +116,7 @@ export function Chapter() {
             {[meta.answer, meta.date, meta.status].filter(Boolean).join(" · ")}
           </p>
           <div className="hero-actions">
-            <a className="btn solid" href={meta.docx} download={meta.docxName}>
+            <a className="btn solid" href={publicUrl(meta.docx)} download={meta.docxName}>
               Download Word
             </a>
             <a className="btn ghost" href="#episode">
@@ -196,7 +197,7 @@ export function Chapter() {
             <div className="toc-desktop">
               <p>On this page</p>
               <Toc sections={grouped?.sections || []} active={active} />
-              <a className="doc-link" href={meta.docx} download={meta.docxName}>
+              <a className="doc-link" href={publicUrl(meta.docx)} download={meta.docxName}>
                 Download {meta.docxName}
               </a>
             </div>

@@ -1,5 +1,5 @@
 import { useRef } from "react";
-import { plain } from "../lib/text";
+import { plain, publicUrl } from "../lib/text";
 import { Prose, RichText } from "./RichText";
 
 function ReadingKey() {
@@ -85,7 +85,7 @@ function Figure({ block }) {
         className="plate-button"
         onClick={() => dialog.current?.showModal()}
       >
-        <img src={block.src} alt={block.alt || block.caption || ""} />
+        <img src={publicUrl(block.src)} alt={block.alt || block.caption || ""} />
       </button>
       {block.caption && <figcaption>{block.caption}</figcaption>}
       <dialog
@@ -95,7 +95,7 @@ function Figure({ block }) {
           if (event.target === dialog.current) dialog.current.close();
         }}
       >
-        <img src={block.src} alt="" />
+        <img src={publicUrl(block.src)} alt="" />
       </dialog>
     </figure>
   );
@@ -272,9 +272,15 @@ export function Video({ meta }) {
   return (
     <figure className="player" id="episode">
       <video controls preload="metadata" playsInline>
-        <source src={meta.video} type="video/mp4" />
+        <source src={publicUrl(meta.video)} type="video/mp4" />
         {meta.captions && (
-          <track label="English" kind="captions" srcLang="en" src={meta.captions} default />
+          <track
+            label="English"
+            kind="captions"
+            srcLang="en"
+            src={publicUrl(meta.captions)}
+            default
+          />
         )}
       </video>
       <figcaption>
