@@ -35,6 +35,7 @@ export function Home() {
       <section className="hero">
         <p className="eyebrow">Eighteen episodes · videos and the reading edition</p>
         <h1>How AI changed microservice architecture</h1>
+        <p className="byline">{series.credit}</p>
         <p className="deck">{aim?.sentence}</p>
         <div className="hero-actions">
           <Link className="btn solid" to="/read/the-aim">
@@ -61,7 +62,7 @@ export function Home() {
           <h2>Watch the map, then read in order</h2>
           <p className="deck tight">{map.plain}</p>
         </div>
-        <Video meta={{ ...map, presenter: series.presenter }} />
+        <Video meta={{ ...map, presenter: series.presenter, credit: series.credit }} />
       </section>
 
       <section className="finder">

@@ -66,7 +66,7 @@ export function Shell({ children }) {
             Each episode has a video and a Word document you can download.
           </p>
           <p>
-            Presented by {series.presenter}. Reading edition, {series.date}.
+            {series.credit} Reading edition, {series.date}.
           </p>
         </div>
       </footer>

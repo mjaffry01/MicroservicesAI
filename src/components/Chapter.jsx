@@ -117,6 +117,7 @@ export function Chapter() {
             {meta.mark && <span aria-hidden="true">{meta.mark} </span>}
             {meta.title}
           </h1>
+          <p className="byline">{series.credit}</p>
           <p className="status">
             {[meta.answer, meta.date, meta.status].filter(Boolean).join(" · ")}
           </p>
@@ -135,7 +136,7 @@ export function Chapter() {
           <ShareBar title={meta.title} text={meta.sentence || meta.status} />
         </header>
 
-        <Video meta={{ ...meta, presenter: series.presenter }} />
+        <Video meta={{ ...meta, presenter: series.presenter, credit: series.credit }} />
 
         {(feature.picked.sentence || feature.picked.plain) && (
           <div className="feature-pair">

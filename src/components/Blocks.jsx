@@ -286,7 +286,7 @@ export function Video({ meta }) {
       <figcaption>
         Episode {String(meta.episode).padStart(2, "0")}
         {meta.duration ? ` · ${meta.duration}` : ""}
-        <span> · Spoken by {meta.presenter || "Mohammad Ali Jaffry"}</span>
+        <span> · {meta.credit || "Researched and authored by Mohammad Ali Jaffry, architect at MindSuite."}</span>
       </figcaption>
     </figure>
   );
