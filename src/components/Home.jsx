@@ -1,9 +1,10 @@
-import { useEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import series from "../data/series.json";
 import { PARTS, partById } from "../lib/parts";
 import { episodeLabel } from "../lib/text";
 import { Video } from "./Blocks";
+import { ShareBar, useShareMeta } from "./Share";
 
 export function Home() {
   const [query, setQuery] = useState("");
@@ -11,9 +12,12 @@ export function Home() {
   const map = chapters[0];
   const aim = chapters.find((chapter) => chapter.slug === "the-aim");
 
-  useEffect(() => {
-    document.title = "What AI changed";
-  }, []);
+  useShareMeta({
+    title: "How AI changed microservice architecture",
+    description:
+      aim?.sentence ||
+      "A research series on how AI changed microservice architecture.",
+  });
 
   const filtered = useMemo(() => {
     const needle = query.trim().toLowerCase();
@@ -40,6 +44,10 @@ export function Home() {
             Open the map
           </Link>
         </div>
+        <ShareBar
+          title="How AI changed microservice architecture"
+          text={aim?.sentence || "A research series on microservice architecture."}
+        />
         <div className="spine-colors" aria-hidden="true">
           {PARTS.filter((part) => part.id !== "map").map((part) => (
             <span key={part.id} style={{ background: part.bg }} />

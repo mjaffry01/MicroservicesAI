@@ -14,6 +14,7 @@ import {
 import { Flow, Video } from "./Blocks";
 import { RichText } from "./RichText";
 import { useReadingProgress } from "./Shell";
+import { ShareBar, useShareMeta } from "./Share";
 
 export function Chapter() {
   const { slug } = useParams();
@@ -22,11 +23,15 @@ export function Chapter() {
   const [active, setActive] = useState("");
   const setProgress = useReadingProgress();
 
+  useShareMeta({
+    title: meta ? `${meta.title} · What AI changed` : "What AI changed",
+    description: meta?.sentence || meta?.status || "A research series on microservice architecture.",
+  });
+
   useEffect(() => {
     let live = true;
     setBody(null);
     if (!meta) return undefined;
-    document.title = `${meta.title} · What AI changed`;
     loadChapter(slug).then((data) => {
       if (live) setBody(data);
     });
@@ -127,6 +132,7 @@ export function Chapter() {
               {meta.figures === 1 ? "figure" : "figures"}
             </span>
           </div>
+          <ShareBar title={meta.title} text={meta.sentence || meta.status} />
         </header>
 
         <Video meta={{ ...meta, presenter: series.presenter }} />
